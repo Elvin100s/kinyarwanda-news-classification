@@ -1,0 +1,136 @@
+{
+  "id": "B0",
+  "name": "Majority class",
+  "family": "baseline",
+  "research_question": "floor",
+  "description": "Always predicts the most frequent training class.",
+  "fast_mode": false,
+  "seed": 42,
+  "timestamp_utc": "2026-09-25T10:08:30Z",
+  "hyperparameters": {
+    "majority_class": "politics"
+  },
+  "n_train": 6863,
+  "n_val": 763,
+  "n_test": 4254,
+  "val_metrics": {
+    "accuracy": 0.23722149410222804,
+    "macro_f1": 0.0273910411622276,
+    "weighted_f1": 0.09096841193326966
+  },
+  "test_metrics": {
+    "accuracy": 0.10390220968500236,
+    "macro_f1": 0.01344609394013142,
+    "weighted_f1": 0.01955910420816484
+  },
+  "test_macro_f1_ci95": [
+    0.012362342403141201,
+    0.014566858053011934
+  ],
+  "per_class_test": [
+    {
+      "class": "politics",
+      "precision": 0.10390220968500236,
+      "recall": 1.0,
+      "f1": 0.18824531516183987,
+      "support": 442
+    },
+    {
+      "class": "sport",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 812
+    },
+    {
+      "class": "economy",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 222
+    },
+    {
+      "class": "health",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 320
+    },
+    {
+      "class": "entertainment",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 848
+    },
+    {
+      "class": "history",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 12
+    },
+    {
+      "class": "technology",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 152
+    },
+    {
+      "class": "tourism",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 152
+    },
+    {
+      "class": "culture",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 203
+    },
+    {
+      "class": "fashion",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 151
+    },
+    {
+      "class": "religion",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 335
+    },
+    {
+      "class": "environment",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 175
+    },
+    {
+      "class": "education",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 70
+    },
+    {
+      "class": "relationship",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 360
+    }
+  ],
+  "train_seconds": 0.001,
+  "n_parameters": 1,
+  "inference_ms_per_article": null,
+  "peak_gpu_mb": null,
+  "predictions_file": "results/predictions/B0.csv",
+  "notes": "Floor. Demonstrates the accuracy/macro-F1 gap on imbalanced data."
+}

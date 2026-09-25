@@ -1,0 +1,149 @@
+{
+  "id": "B1",
+  "name": "TF-IDF word 1-2 grams + LR",
+  "family": "classical",
+  "research_question": "baseline",
+  "description": "Sparse word n-gram features with multinomial logistic regression.",
+  "fast_mode": false,
+  "seed": 42,
+  "timestamp_utc": "2026-09-25T10:10:32Z",
+  "hyperparameters": {
+    "C": 1.0,
+    "C_grid": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "class_weight": "balanced",
+    "ngram_range": [
+      1,
+      2
+    ],
+    "analyzer": "word",
+    "n_features": 200000,
+    "sublinear_tf": true
+  },
+  "n_train": 6863,
+  "n_val": 763,
+  "n_test": 4254,
+  "val_metrics": {
+    "accuracy": 0.762778505897772,
+    "macro_f1": 0.6391135803863587,
+    "weighted_f1": 0.7618679531064956
+  },
+  "test_metrics": {
+    "accuracy": 0.692054536906441,
+    "macro_f1": 0.5109299821791357,
+    "weighted_f1": 0.6794371792604098
+  },
+  "test_macro_f1_ci95": [
+    0.49306935325240275,
+    0.5265670468584912
+  ],
+  "per_class_test": [
+    {
+      "class": "politics",
+      "precision": 0.6555819477434679,
+      "recall": 0.6244343891402715,
+      "f1": 0.6396292004634995,
+      "support": 442
+    },
+    {
+      "class": "sport",
+      "precision": 0.9527458492975734,
+      "recall": 0.9187192118226601,
+      "f1": 0.935423197492163,
+      "support": 812
+    },
+    {
+      "class": "economy",
+      "precision": 0.37264150943396224,
+      "recall": 0.7117117117117117,
+      "f1": 0.4891640866873065,
+      "support": 222
+    },
+    {
+      "class": "health",
+      "precision": 0.5945945945945946,
+      "recall": 0.75625,
+      "f1": 0.6657496561210454,
+      "support": 320
+    },
+    {
+      "class": "entertainment",
+      "precision": 0.7788671023965141,
+      "recall": 0.8431603773584906,
+      "f1": 0.8097395243488109,
+      "support": 848
+    },
+    {
+      "class": "history",
+      "precision": 0.047872340425531915,
+      "recall": 0.75,
+      "f1": 0.09,
+      "support": 12
+    },
+    {
+      "class": "technology",
+      "precision": 0.5748792270531401,
+      "recall": 0.7828947368421053,
+      "f1": 0.6629526462395543,
+      "support": 152
+    },
+    {
+      "class": "tourism",
+      "precision": 0.8235294117647058,
+      "recall": 0.27631578947368424,
+      "f1": 0.41379310344827586,
+      "support": 152
+    },
+    {
+      "class": "culture",
+      "precision": 0.7368421052631579,
+      "recall": 0.13793103448275862,
+      "f1": 0.23236514522821577,
+      "support": 203
+    },
+    {
+      "class": "fashion",
+      "precision": 1.0,
+      "recall": 0.271523178807947,
+      "f1": 0.4270833333333333,
+      "support": 151
+    },
+    {
+      "class": "religion",
+      "precision": 0.8353413654618473,
+      "recall": 0.6208955223880597,
+      "f1": 0.7123287671232876,
+      "support": 335
+    },
+    {
+      "class": "environment",
+      "precision": 1.0,
+      "recall": 0.08,
+      "f1": 0.14814814814814814,
+      "support": 175
+    },
+    {
+      "class": "education",
+      "precision": 0.2,
+      "recall": 0.08571428571428572,
+      "f1": 0.12,
+      "support": 70
+    },
+    {
+      "class": "relationship",
+      "precision": 0.7039337474120083,
+      "recall": 0.9444444444444444,
+      "f1": 0.8066429418742586,
+      "support": 360
+    }
+  ],
+  "train_seconds": 119.24,
+  "n_parameters": 2800014,
+  "inference_ms_per_article": 0.012,
+  "peak_gpu_mb": null,
+  "predictions_file": "results/predictions/B1.csv",
+  "notes": null
+}

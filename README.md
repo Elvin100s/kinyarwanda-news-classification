@@ -109,11 +109,29 @@ to users), reported with bootstrap 95% confidence intervals and McNemar signific
 
 ## Results
 
-`[[TODO: Phase 3–6 — generated from results/runs/*.json, never typed by hand]]`
+*Generated from `results/runs/*.json` — see `results/experiments.csv` and
+`report_materials/tables.md`. E2–E4 and the ablations are pending (Phases 4–5).*
+
+| ID | Model | RQ | Val macro-F1 | Test macro-F1 | 95% CI | Test acc. | Params |
+|---|---|---|---|---|---|---|---|
+| E1 | TF-IDF char 2-5 grams + LR | RQ1 | 0.6995 | **0.5870** | 0.571–0.603 | 0.7261 | 1,359,736 |
+| B1 | TF-IDF word 1-2 grams + LR | baseline | 0.6391 | **0.5109** | 0.493–0.527 | 0.6921 | 2,800,014 |
+| B0 | Majority class | floor | 0.0274 | **0.0134** | 0.012–0.015 | 0.1039 | 1 |
+
+Primary metric is **macro-F1**. B0's accuracy (10.4%) is nearly **8× its macro-F1** (1.3%),
+which is the whole argument for the metric on a set this imbalanced.
 
 ## Key findings
 
-`[[TODO: Phase 8 — one per RQ, with numbers]]`
+**RQ1 — Do character n-grams beat word n-grams? Yes, decisively.** E1 reaches **0.5870**
+test macro-F1 against B1's **0.5109**, a **+7.6 point** gain with **non-overlapping**
+confidence intervals, using **less than half the parameters**. The gain is concentrated
+almost entirely in the smallest training classes — environment (38 train articles) improves
++0.295 F1, tourism +0.234, fashion +0.201 — while the largest classes barely move. Character
+n-grams share evidence across the inflected forms of one stem, which is what an agglutinative
+language with **61.6% single-occurrence word types** needs most.
+
+**RQ2, RQ3, RQ4** — `[[TODO: Phases 4–6]]`
 
 ## Reproducing this work
 

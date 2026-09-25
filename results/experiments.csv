@@ -1,0 +1,4 @@
+id,model,family,RQ,val_macro_f1,test_macro_f1,test_ci95_low,test_ci95_high,test_accuracy,test_weighted_f1,params,train_s,infer_ms,fast_mode
+E1,TF-IDF char 2-5 grams + LR,classical,RQ1,0.6995,0.587,0.5705,0.6027,0.7261,0.73,1359736,234.61,0.051,False
+B1,TF-IDF word 1-2 grams + LR,classical,baseline,0.6391,0.5109,0.4931,0.5266,0.6921,0.6794,2800014,119.24,0.012,False
+B0,Majority class,baseline,floor,0.0274,0.0134,0.0124,0.0146,0.1039,0.0196,1,0.001,,False
