@@ -99,8 +99,7 @@ result files produced that way are tagged `"fast_mode": true`.
 ## Repository structure
 
 ```
-README.md  PRD.md  DECISIONS.md  ATTRIBUTION.md  DEFENSE_NOTES.md  VIDEO_SCRIPT.md
-requirements.txt  .gitignore
+README.md  requirements.txt  .gitignore
 notebooks/          kinyarwanda_news_classification.py  (source of truth)
                     kinyarwanda_news_classification.ipynb  (generated)
 app/                app.py, requirements.txt, README.md
@@ -111,9 +110,14 @@ report_materials/   tables.md, figures_index.md, related_work_notes.md,
                     report_map.md, references.bib
 ```
 
-- **`PRD.md`** — the full specification this repo is built against.
-- **`DECISIONS.md`** — non-obvious engineering choices, each with the alternative rejected.
-- **`ATTRIBUTION.md`** — what was reused vs. what was built here.
+## Attribution
+
+Built on **KINNEWS** (Niyongabo et al., 2020, MIT licence) and the pretrained checkpoints
+`xlm-roberta-base` and `Davlan/afro-xlmr-base`, using PyTorch, Hugging Face
+`transformers`/`datasets`, scikit-learn, gensim and Gradio (versions pinned in
+`requirements.txt`). Everything else — preprocessing, the leakage audit, the BiLSTM, the
+training and evaluation code, and the app — was written for this project. Results are
+produced by code that ran; no metric here is estimated by a language model.
 
 ## Limitations
 

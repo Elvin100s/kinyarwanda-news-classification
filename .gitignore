@@ -30,3 +30,10 @@ hf_cache/
 # OS / editor
 .DS_Store
 *.swp
+
+# Working documents kept local only (README.md is the sole tracked root markdown)
+/PRD.md
+/DECISIONS.md
+/ATTRIBUTION.md
+/DEFENSE_NOTES.md
+/VIDEO_SCRIPT.md
