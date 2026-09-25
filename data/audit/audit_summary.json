@@ -1,0 +1,21 @@
+{
+  "train_rows": 17014,
+  "test_rows": 4254,
+  "train_exact_dup_rows_raw": 9379,
+  "train_exact_dup_rows_normalised": 9385,
+  "train_duplicate_url_rows": 9387,
+  "train_distinct_texts": 7629,
+  "test_exact_dup_rows_normalised": 791,
+  "dup_groups_with_conflicting_labels": 156,
+  "rows_in_label_conflicting_groups": 1446,
+  "train_test_exact_overlap_rows": 3,
+  "train_test_near_dup_rows": 61,
+  "near_dup_threshold": 0.9,
+  "train_short_articles": 0,
+  "test_short_articles": 5,
+  "test_null_content": 5,
+  "train_rows_after_dedup": 7626,
+  "train_rows_removed": 9388,
+  "imbalance_ratio_before": 117.5,
+  "imbalance_ratio_after": 53.2
+}

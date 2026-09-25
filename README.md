@@ -40,8 +40,53 @@ by topic, and researchers or developers who need a documented Kinyarwanda classi
 
 ## Dataset
 
-`[[TODO: Phase 2 — source, size, licence, class counts and imbalance ratio, length stats,
-duplicate/leakage audit, all confirmed programmatically]]`
+**KINNEWS** (Niyongabo et al., 2020) — 21,268 Kinyarwanda news articles from 20 Rwandan
+sources, 14 topics, **MIT licence**. The *raw* version is used, because Transformers need
+natural text and this project documents its own preprocessing. Every figure below is
+confirmed programmatically by the notebook, not quoted from the paper.
+
+| | Published | As loaded |
+|---|---|---|
+| Train / test articles | 17,014 / 4,254 | 17,014 / 4,254 ✓ |
+| Classes | 14 | 14 ✓ |
+| Fields | `label, kin_label, en_label, url, title, content` | ✓ |
+
+**Three findings from the audit that shape the whole project:**
+
+1. **55% of the training file is duplicated.** Only 7,629 of 17,014 training rows carry
+   distinct text; 9,379 rows repeat earlier text byte-for-byte and one article appears **80
+   times**. Duplicates are removed *before* the validation split is drawn — otherwise copies
+   of one article land on both sides of it and validation would measure memorisation.
+   Training set: 17,014 → **7,626** rows. Imbalance falls from **117.5× to 53.2×**.
+   The test set is never modified.
+
+2. **Official train and test do not share a class distribution.** Environment is ~19× more
+   common in test than in train, fashion ~11×, while economy is ~0.2×. Total variation
+   distance is 0.383, and deduplication only narrows it to 0.320 — this is a real property
+   of the published benchmark. A model that faithfully learns the training prior is
+   *penalised* by this test set, which makes class weighting essential rather than optional.
+
+3. **Articles are far longer than the context window.** Median 292 words / 716 XLM-R subword
+   tokens; **94.9% exceed 256 tokens and 74.5% exceed 512**. Even at `max_length=512` the
+   model never sees the tail of three-quarters of the corpus — which makes ablation A2 a
+   central experiment rather than a footnote.
+
+**Also recorded:** 3 training articles were verbatim copies of test articles (removed); 61
+test articles (1.4%) have a near-duplicate in train (reported, not removed); 156 groups of
+identical text carry conflicting labels (1,446 rows), an irreducible ceiling on accuracy.
+
+**Morphology, quantified.** 231,516 distinct word types over 2.38M tokens, and **61.6% of
+types appear exactly once**. Both tokenizers split Kinyarwanda at **2.47 subword tokens per
+word**. This is the concrete evidence behind RQ1 and RQ2.
+
+| Split | Articles | Notes |
+|---|---|---|
+| train | 6,863 | deduplicated, stratified 90% |
+| validation | 763 | stratified 10%; all tuning and early stopping |
+| test | 4,254 | official split, untouched, evaluated once per final model |
+
+Indices are persisted to `data/splits.json`; the notebook asserts that no article text is
+shared across the three splits.
 
 ## Method
 
