@@ -1,0 +1,41 @@
+# Kinyarwanda News Topic Classification — pinned environment
+#
+# Verified working on Python 3.13.5 / Linux. Every version below was installed and
+# imported successfully before being written here; none is a guess.
+#
+# CPU-only install (local development, and the Gradio app):
+#     python -m venv .venv && source .venv/bin/activate
+#     pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+#
+# On Colab (GPU), drop the --extra-index-url so pip resolves the CUDA build of torch.
+
+# ---- deep learning ----
+torch==2.14.0
+transformers==4.57.6
+accelerate==1.15.0
+tokenizers==0.22.2
+safetensors==0.8.0
+sentencepiece==0.2.2          # XLM-R / AfroXLMR use a SentencePiece tokenizer
+
+# ---- data ----
+datasets==4.8.5
+pyarrow==25.0.1
+# Fallback only: if the KINNEWS loading routes in Section 3 all fail on datasets>=3,
+# `pip install "datasets<3.0"` restores script-based loading with trust_remote_code=True.
+
+# ---- classical ML, embeddings, scientific stack ----
+scikit-learn==1.8.0
+gensim==4.4.0                 # fastText skip-gram embeddings for E2b
+numpy==2.5.1
+scipy==1.17.1
+pandas==2.2.3
+matplotlib==3.10.1
+seaborn==0.13.2
+
+# ---- hub + notebook tooling ----
+huggingface-hub==0.36.2       # pinned <1.0 by transformers 4.57
+jupytext==1.19.5              # .py (percent) <-> .ipynb round trip
+nbformat==5.10.4
+ipykernel==7.2.0
+
+# The Gradio app has its own lighter, CPU-only pin set: see app/requirements.txt

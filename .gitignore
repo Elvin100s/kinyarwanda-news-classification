@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Data: raw corpora are re-downloadable; keep only splits + small derived files
+data/*
+!data/.gitkeep
+!data/splits.json
+!data/audit/
+data/audit/*
+!data/audit/.gitkeep
+
+# Model artefacts and caches (large, re-creatable)
+models/
+checkpoints/
+*.bin
+*.safetensors
+*.pt
+*.kv
+*.model
+hf_cache/
+.cache/
+
+# Results: JSON + csv are committed (they are the evidence trail).
+# Prediction dumps can be large but are required by the PRD, so they stay.
+
+# OS / editor
+.DS_Store
+*.swp
