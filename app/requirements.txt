@@ -1,0 +1,9 @@
+# CPU-only pins for the Hugging Face Space. Deliberately lighter than the project's
+# root requirements.txt: the app only needs inference, not training or plotting.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.14.0
+transformers==4.57.6
+tokenizers==0.22.2
+sentencepiece==0.2.2
+safetensors==0.8.0
+gradio==5.49.1

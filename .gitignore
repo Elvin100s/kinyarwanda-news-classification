@@ -40,3 +40,11 @@ hf_cache/
 /ATTRIBUTION.md
 /DEFENSE_NOTES.md
 /VIDEO_SCRIPT.md
+/COLAB_RUNBOOK.md
+
+# Fast-mode smoke-test outputs: never reportable, regenerated on demand
+results/runs/_fast/
+results/predictions/_fast/
+results/experiments_FAST.csv
+report_materials/tables_FAST.md
+/video_script/

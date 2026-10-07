@@ -1,7 +1,7 @@
 {
   "seed": 42,
   "val_size": 0.1,
-  "created_utc": "2026-09-25T10:07:58Z",
+  "created_utc": "2026-09-25T11:04:22Z",
   "note": "Indices are positions in the DEDUPLICATED train frame; test is the official split, untouched.",
   "audit": {
     "train_rows": 17014,
