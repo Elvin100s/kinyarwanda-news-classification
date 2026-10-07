@@ -1,0 +1,150 @@
+{
+  "id": "E4_s44",
+  "name": "AfroXLMR base (fine-tuned)",
+  "family": "transformer",
+  "research_question": "RQ3",
+  "description": "Seed-variance rerun of E4.",
+  "fast_mode": false,
+  "seed": 44,
+  "timestamp_utc": "2026-09-29T02:52:29Z",
+  "hyperparameters": {
+    "model_id": "Davlan/afro-xlmr-base",
+    "lr": 2e-05,
+    "epochs": 3,
+    "max_length": 512,
+    "batch_size": 16,
+    "batch_size_requested": 16,
+    "n_gpu": 1,
+    "effective_batch": 16,
+    "group_by_length": true,
+    "class_weighted_loss": true,
+    "grad_accum": 1,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "fp16": true,
+    "text_mode": "title_content"
+  },
+  "n_train": 6863,
+  "n_val": 763,
+  "n_test": 4254,
+  "val_metrics": {
+    "accuracy": 0.7575360419397117,
+    "macro_f1": 0.6199534324605613,
+    "weighted_f1": 0.7560301877606679
+  },
+  "test_metrics": {
+    "accuracy": 0.7581100141043724,
+    "macro_f1": 0.615099890627706,
+    "weighted_f1": 0.7583171506097236
+  },
+  "test_macro_f1_ci95": [
+    0.5976625872421456,
+    0.6297305414716401
+  ],
+  "per_class_test": [
+    {
+      "class": "politics",
+      "precision": 0.775,
+      "recall": 0.5610859728506787,
+      "f1": 0.6509186351706037,
+      "support": 442
+    },
+    {
+      "class": "sport",
+      "precision": 0.9476885644768857,
+      "recall": 0.9593596059113301,
+      "f1": 0.9534883720930233,
+      "support": 812
+    },
+    {
+      "class": "economy",
+      "precision": 0.5016501650165016,
+      "recall": 0.6846846846846847,
+      "f1": 0.579047619047619,
+      "support": 222
+    },
+    {
+      "class": "health",
+      "precision": 0.6895604395604396,
+      "recall": 0.784375,
+      "f1": 0.7339181286549707,
+      "support": 320
+    },
+    {
+      "class": "entertainment",
+      "precision": 0.8724179829890644,
+      "recall": 0.8466981132075472,
+      "f1": 0.8593656493117894,
+      "support": 848
+    },
+    {
+      "class": "history",
+      "precision": 0.05263157894736842,
+      "recall": 0.9166666666666666,
+      "f1": 0.09954751131221719,
+      "support": 12
+    },
+    {
+      "class": "technology",
+      "precision": 0.6334841628959276,
+      "recall": 0.9210526315789473,
+      "f1": 0.7506702412868632,
+      "support": 152
+    },
+    {
+      "class": "tourism",
+      "precision": 0.7641509433962265,
+      "recall": 0.5328947368421053,
+      "f1": 0.627906976744186,
+      "support": 152
+    },
+    {
+      "class": "culture",
+      "precision": 0.6617647058823529,
+      "recall": 0.22167487684729065,
+      "f1": 0.33210332103321033,
+      "support": 203
+    },
+    {
+      "class": "fashion",
+      "precision": 0.7676056338028169,
+      "recall": 0.7218543046357616,
+      "f1": 0.7440273037542662,
+      "support": 151
+    },
+    {
+      "class": "religion",
+      "precision": 0.8027397260273973,
+      "recall": 0.8746268656716418,
+      "f1": 0.8371428571428572,
+      "support": 335
+    },
+    {
+      "class": "environment",
+      "precision": 0.9636363636363636,
+      "recall": 0.3028571428571429,
+      "f1": 0.4608695652173913,
+      "support": 175
+    },
+    {
+      "class": "education",
+      "precision": 0.17647058823529413,
+      "recall": 0.08571428571428572,
+      "f1": 0.11538461538461539,
+      "support": 70
+    },
+    {
+      "class": "relationship",
+      "precision": 0.8033175355450237,
+      "recall": 0.9416666666666667,
+      "f1": 0.8670076726342711,
+      "support": 360
+    }
+  ],
+  "train_seconds": 607.5,
+  "n_parameters": 278054414,
+  "inference_ms_per_article": 7.53,
+  "peak_gpu_mb": 14064.951296,
+  "predictions_file": "results/predictions/seeds/E4_s44.csv",
+  "notes": null
+}

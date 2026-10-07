@@ -1,0 +1,150 @@
+{
+  "id": "A1",
+  "name": "E4 \u2014 title only",
+  "family": "transformer",
+  "research_question": "ablation",
+  "description": "Same model and settings, but only the headline is given as input.",
+  "fast_mode": false,
+  "seed": 42,
+  "timestamp_utc": "2026-09-29T01:56:07Z",
+  "hyperparameters": {
+    "model_id": "Davlan/afro-xlmr-base",
+    "lr": 2e-05,
+    "epochs": 3,
+    "max_length": 512,
+    "batch_size": 16,
+    "batch_size_requested": 16,
+    "n_gpu": 1,
+    "effective_batch": 16,
+    "group_by_length": true,
+    "class_weighted_loss": true,
+    "grad_accum": 1,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "fp16": true,
+    "text_mode": "title_only"
+  },
+  "n_train": 6863,
+  "n_val": 763,
+  "n_test": 4254,
+  "val_metrics": {
+    "accuracy": 0.6238532110091743,
+    "macro_f1": 0.4494359879175974,
+    "weighted_f1": 0.625149946594872
+  },
+  "test_metrics": {
+    "accuracy": 0.6438645980253879,
+    "macro_f1": 0.42129046593605796,
+    "weighted_f1": 0.6193593925050921
+  },
+  "test_macro_f1_ci95": [
+    0.4088173968067534,
+    0.43282409697758734
+  ],
+  "per_class_test": [
+    {
+      "class": "politics",
+      "precision": 0.6810631229235881,
+      "recall": 0.4638009049773756,
+      "f1": 0.5518169582772544,
+      "support": 442
+    },
+    {
+      "class": "sport",
+      "precision": 0.9390088945362135,
+      "recall": 0.9100985221674877,
+      "f1": 0.9243277048155097,
+      "support": 812
+    },
+    {
+      "class": "economy",
+      "precision": 0.32,
+      "recall": 0.6126126126126126,
+      "f1": 0.42040185471406494,
+      "support": 222
+    },
+    {
+      "class": "health",
+      "precision": 0.5485436893203883,
+      "recall": 0.70625,
+      "f1": 0.6174863387978142,
+      "support": 320
+    },
+    {
+      "class": "entertainment",
+      "precision": 0.732776617954071,
+      "recall": 0.8278301886792453,
+      "f1": 0.7774086378737541,
+      "support": 848
+    },
+    {
+      "class": "history",
+      "precision": 0.04,
+      "recall": 0.9166666666666666,
+      "f1": 0.07665505226480836,
+      "support": 12
+    },
+    {
+      "class": "technology",
+      "precision": 0.5862068965517241,
+      "recall": 0.7828947368421053,
+      "f1": 0.6704225352112676,
+      "support": 152
+    },
+    {
+      "class": "tourism",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 152
+    },
+    {
+      "class": "culture",
+      "precision": 0.4418604651162791,
+      "recall": 0.09359605911330049,
+      "f1": 0.15447154471544716,
+      "support": 203
+    },
+    {
+      "class": "fashion",
+      "precision": 1.0,
+      "recall": 0.006622516556291391,
+      "f1": 0.013157894736842105,
+      "support": 151
+    },
+    {
+      "class": "religion",
+      "precision": 0.6848137535816619,
+      "recall": 0.7134328358208956,
+      "f1": 0.6988304093567251,
+      "support": 335
+    },
+    {
+      "class": "environment",
+      "precision": 0.34615384615384615,
+      "recall": 0.05142857142857143,
+      "f1": 0.08955223880597014,
+      "support": 175
+    },
+    {
+      "class": "education",
+      "precision": 0.1,
+      "recall": 0.05714285714285714,
+      "f1": 0.07272727272727272,
+      "support": 70
+    },
+    {
+      "class": "relationship",
+      "precision": 0.7615740740740741,
+      "recall": 0.9138888888888889,
+      "f1": 0.8308080808080808,
+      "support": 360
+    }
+  ],
+  "train_seconds": 194.1,
+  "n_parameters": 278054414,
+  "inference_ms_per_article": 0.671,
+  "peak_gpu_mb": 11580.833792,
+  "predictions_file": "results/predictions/A1.csv",
+  "notes": "A1: measures how much topic signal lives in the title alone."
+}

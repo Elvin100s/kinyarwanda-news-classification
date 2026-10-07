@@ -1,0 +1,38 @@
+[
+  {
+    "comparison": "B1 vs E1",
+    "only_A_right": 135,
+    "only_B_right": 278,
+    "statistic": 48.823244552058114,
+    "p_value": 2.8010045399777445e-12,
+    "test": "chi-squared w/ continuity correction",
+    "significant_at_0.05": true
+  },
+  {
+    "comparison": "E3 vs E4",
+    "only_A_right": 206,
+    "only_B_right": 814,
+    "statistic": 361.2245098039216,
+    "p_value": 1.5238833136997767e-80,
+    "test": "chi-squared w/ continuity correction",
+    "significant_at_0.05": true
+  },
+  {
+    "comparison": "B1 vs E1",
+    "only_A_right": 135,
+    "only_B_right": 278,
+    "statistic": 48.823244552058114,
+    "p_value": 2.8010045399777445e-12,
+    "test": "chi-squared w/ continuity correction",
+    "significant_at_0.05": true
+  },
+  {
+    "comparison": "E2a vs E2b",
+    "only_A_right": 212,
+    "only_B_right": 639,
+    "statistic": 213.2502937720329,
+    "p_value": 2.683917178986393e-48,
+    "test": "chi-squared w/ continuity correction",
+    "significant_at_0.05": true
+  }
+]

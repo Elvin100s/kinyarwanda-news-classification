@@ -1,0 +1,27 @@
+[
+  {
+    "label": "Correct: sport",
+    "text": "Rayon Sport nyuma yo gutsinda Kiyovu ubu iri muri kiwe cya kabiri",
+    "note": "model predicts sport"
+  },
+  {
+    "label": "Correct: sport",
+    "text": "Ikipe ya Rayon Sport iracyafite Icyizere kuri Shampiyona",
+    "note": "model predicts sport"
+  },
+  {
+    "label": "Correct: sport",
+    "text": "Shampiyona y’Umupira w’Amaguru mu Rwanda irakomeza- Uko amakipe azacakirana",
+    "note": "model predicts sport"
+  },
+  {
+    "label": "KNOWN FAILURE: true entertainment, predicted sport",
+    "text": "Tombora yongeye guhuza Rayon Sports na AS Kigali",
+    "note": "The model is confidently wrong here (98%). entertainment and sport overlap in this corpus."
+  },
+  {
+    "label": "Out of domain: English",
+    "note": "Still returns a topic.",
+    "text": "The central bank raised interest rates by half a point today."
+  }
+]

@@ -1,0 +1,150 @@
+{
+  "id": "A2",
+  "name": "E4 \u2014 max_length 256",
+  "family": "transformer",
+  "research_question": "ablation",
+  "description": "Same model and settings, but input truncated at 256 subword tokens.",
+  "fast_mode": false,
+  "seed": 42,
+  "timestamp_utc": "2026-09-29T02:03:08Z",
+  "hyperparameters": {
+    "model_id": "Davlan/afro-xlmr-base",
+    "lr": 2e-05,
+    "epochs": 3,
+    "max_length": 256,
+    "batch_size": 16,
+    "batch_size_requested": 16,
+    "n_gpu": 1,
+    "effective_batch": 16,
+    "group_by_length": true,
+    "class_weighted_loss": true,
+    "grad_accum": 1,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "fp16": true,
+    "text_mode": "title_content"
+  },
+  "n_train": 6863,
+  "n_val": 763,
+  "n_test": 4254,
+  "val_metrics": {
+    "accuracy": 0.7496723460026212,
+    "macro_f1": 0.6104740820103002,
+    "weighted_f1": 0.7502260707424949
+  },
+  "test_metrics": {
+    "accuracy": 0.7287259050305595,
+    "macro_f1": 0.5750377733932427,
+    "weighted_f1": 0.7269579430715349
+  },
+  "test_macro_f1_ci95": [
+    0.5594213304378687,
+    0.5909059826901161
+  ],
+  "per_class_test": [
+    {
+      "class": "politics",
+      "precision": 0.764505119453925,
+      "recall": 0.5067873303167421,
+      "f1": 0.6095238095238096,
+      "support": 442
+    },
+    {
+      "class": "sport",
+      "precision": 0.9451887941534713,
+      "recall": 0.9556650246305419,
+      "f1": 0.9503980404164115,
+      "support": 812
+    },
+    {
+      "class": "economy",
+      "precision": 0.5033557046979866,
+      "recall": 0.6756756756756757,
+      "f1": 0.5769230769230769,
+      "support": 222
+    },
+    {
+      "class": "health",
+      "precision": 0.6475195822454308,
+      "recall": 0.775,
+      "f1": 0.705547652916074,
+      "support": 320
+    },
+    {
+      "class": "entertainment",
+      "precision": 0.8357487922705314,
+      "recall": 0.8160377358490566,
+      "f1": 0.8257756563245824,
+      "support": 848
+    },
+    {
+      "class": "history",
+      "precision": 0.049107142857142856,
+      "recall": 0.9166666666666666,
+      "f1": 0.09322033898305085,
+      "support": 12
+    },
+    {
+      "class": "technology",
+      "precision": 0.6232558139534884,
+      "recall": 0.881578947368421,
+      "f1": 0.7302452316076294,
+      "support": 152
+    },
+    {
+      "class": "tourism",
+      "precision": 0.7413793103448276,
+      "recall": 0.5657894736842105,
+      "f1": 0.6417910447761194,
+      "support": 152
+    },
+    {
+      "class": "culture",
+      "precision": 0.5056179775280899,
+      "recall": 0.22167487684729065,
+      "f1": 0.3082191780821918,
+      "support": 203
+    },
+    {
+      "class": "fashion",
+      "precision": 0.5507246376811594,
+      "recall": 0.5033112582781457,
+      "f1": 0.5259515570934256,
+      "support": 151
+    },
+    {
+      "class": "religion",
+      "precision": 0.7868852459016393,
+      "recall": 0.8597014925373134,
+      "f1": 0.8216833095577746,
+      "support": 335
+    },
+    {
+      "class": "environment",
+      "precision": 0.8888888888888888,
+      "recall": 0.18285714285714286,
+      "f1": 0.3033175355450237,
+      "support": 175
+    },
+    {
+      "class": "education",
+      "precision": 0.14285714285714285,
+      "recall": 0.07142857142857142,
+      "f1": 0.09523809523809523,
+      "support": 70
+    },
+    {
+      "class": "relationship",
+      "precision": 0.808252427184466,
+      "recall": 0.925,
+      "f1": 0.8626943005181347,
+      "support": 360
+    }
+  ],
+  "train_seconds": 375.8,
+  "n_parameters": 278054414,
+  "inference_ms_per_article": 3.633,
+  "peak_gpu_mb": 12319.350784,
+  "predictions_file": "results/predictions/A2.csv",
+  "notes": "A2: measures the cost of harsher truncation."
+}

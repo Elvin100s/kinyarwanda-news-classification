@@ -1,0 +1,6 @@
+{
+  "model": "E1",
+  "device": "cuda",
+  "single_article_ms": 10.14,
+  "batched_ms_per_article": 0.034
+}

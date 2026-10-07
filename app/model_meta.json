@@ -1,0 +1,14 @@
+{
+  "model_id": "E1",
+  "model_name": "TF-IDF char 2-5 grams + LR",
+  "threshold": 0.46000000000000024,
+  "threshold_source": "validation split (notebook 7.7)",
+  "test_macro_f1": 0.5870414999211135,
+  "test_accuracy": 0.7261401034320639,
+  "test_macro_f1_ci95": [
+    0.5705433082911635,
+    0.6026544234370144
+  ],
+  "fast_mode": false,
+  "about_table": "### Results (E1 \u2014 TF-IDF char 2-5 grams + LR)\n\n| Metric | Test |\n|---|---|\n| macro-F1 | **0.5870** |\n| 95% CI | 0.5705 \u2013 0.6027 |\n| accuracy | 0.7261 |\n\nEvaluated once on the official KINNEWS test split (4,254 articles).\n\n| Class | Test F1 | Support |\n|---|---|---|\n| politics | 0.636 | 442 |\n| sport | 0.940 | 812 |\n| economy | 0.562 | 222 |\n| health | 0.674 | 320 |\n| entertainment | 0.826 | 848 |\n| history | 0.091 | 12 |\n| technology | 0.651 | 152 |\n| tourism | 0.648 | 152 |\n| culture | 0.412 | 203 |\n| fashion | 0.628 | 151 |\n| religion | 0.785 | 335 |\n| environment | 0.443 | 175 |\n| education | 0.102 | 70 |\n| relationship | 0.820 | 360 |\n"
+}

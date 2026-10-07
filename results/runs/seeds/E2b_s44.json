@@ -1,0 +1,238 @@
+{
+  "id": "E2b_s44",
+  "name": "BiLSTM (fastText embeddings)",
+  "family": "recurrent",
+  "research_question": "RQ2",
+  "description": "Seed-variance rerun of E2b.",
+  "fast_mode": false,
+  "seed": 44,
+  "timestamp_utc": "2026-09-29T02:30:50Z",
+  "hyperparameters": {
+    "embed_dim": 300,
+    "hidden_dim": 128,
+    "num_layers": 1,
+    "bidirectional": true,
+    "dropout": 0.3,
+    "max_tokens": 400,
+    "min_freq": 2,
+    "lr": 0.001,
+    "batch_size": 64,
+    "epochs": 15,
+    "patience": 3,
+    "grad_clip": 1.0,
+    "class_weighted_loss": true,
+    "vocab_size": 72309,
+    "embeddings": "fastText",
+    "epochs_run": 14,
+    "best_val_macro_f1": 0.6607131421664413
+  },
+  "n_train": 6863,
+  "n_val": 763,
+  "n_test": 4254,
+  "val_metrics": {
+    "accuracy": 0.7431192660550459,
+    "macro_f1": 0.6607131421664413,
+    "weighted_f1": 0.7450541137516647
+  },
+  "test_metrics": {
+    "accuracy": 0.6770098730606487,
+    "macro_f1": 0.4925122812081782,
+    "weighted_f1": 0.6675380925204611
+  },
+  "test_macro_f1_ci95": [
+    0.4757321390584677,
+    0.5078689957331617
+  ],
+  "per_class_test": [
+    {
+      "class": "politics",
+      "precision": 0.6534391534391535,
+      "recall": 0.5588235294117647,
+      "f1": 0.6024390243902439,
+      "support": 442
+    },
+    {
+      "class": "sport",
+      "precision": 0.9455445544554455,
+      "recall": 0.9408866995073891,
+      "f1": 0.9432098765432099,
+      "support": 812
+    },
+    {
+      "class": "economy",
+      "precision": 0.36639676113360325,
+      "recall": 0.8153153153153153,
+      "f1": 0.505586592178771,
+      "support": 222
+    },
+    {
+      "class": "health",
+      "precision": 0.6757679180887372,
+      "recall": 0.61875,
+      "f1": 0.6460032626427407,
+      "support": 320
+    },
+    {
+      "class": "entertainment",
+      "precision": 0.7617521367521367,
+      "recall": 0.8408018867924528,
+      "f1": 0.7993273542600897,
+      "support": 848
+    },
+    {
+      "class": "history",
+      "precision": 0.050761421319796954,
+      "recall": 0.8333333333333334,
+      "f1": 0.09569377990430622,
+      "support": 12
+    },
+    {
+      "class": "technology",
+      "precision": 0.5470588235294118,
+      "recall": 0.6118421052631579,
+      "f1": 0.577639751552795,
+      "support": 152
+    },
+    {
+      "class": "tourism",
+      "precision": 1.0,
+      "recall": 0.1118421052631579,
+      "f1": 0.20118343195266272,
+      "support": 152
+    },
+    {
+      "class": "culture",
+      "precision": 0.5185185185185185,
+      "recall": 0.20689655172413793,
+      "f1": 0.29577464788732394,
+      "support": 203
+    },
+    {
+      "class": "fashion",
+      "precision": 0.9210526315789473,
+      "recall": 0.23178807947019867,
+      "f1": 0.37037037037037035,
+      "support": 151
+    },
+    {
+      "class": "religion",
+      "precision": 0.7580071174377224,
+      "recall": 0.6358208955223881,
+      "f1": 0.6915584415584416,
+      "support": 335
+    },
+    {
+      "class": "environment",
+      "precision": 0.5584415584415584,
+      "recall": 0.24571428571428572,
+      "f1": 0.3412698412698413,
+      "support": 175
+    },
+    {
+      "class": "education",
+      "precision": 0.1111111111111111,
+      "recall": 0.02857142857142857,
+      "f1": 0.045454545454545456,
+      "support": 70
+    },
+    {
+      "class": "relationship",
+      "precision": 0.6909871244635193,
+      "recall": 0.8944444444444445,
+      "f1": 0.7796610169491526,
+      "support": 360
+    }
+  ],
+  "train_seconds": 80.4,
+  "n_parameters": 22136618,
+  "inference_ms_per_article": 0.397,
+  "peak_gpu_mb": 14064.951296,
+  "predictions_file": "results/predictions/seeds/E2b_s44.csv",
+  "notes": null,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.1704891285221657,
+      "val_loss": 1.741197714643116,
+      "val_macro_f1": 0.3220727860788645
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.5331376330699307,
+      "val_loss": 1.3938357955037688,
+      "val_macro_f1": 0.39445179817679554
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.1644987967068854,
+      "val_loss": 1.2612175464942603,
+      "val_macro_f1": 0.46128433069302527
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.9367618167363884,
+      "val_loss": 1.1604267799369943,
+      "val_macro_f1": 0.47884610988601445
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.7124515036773738,
+      "val_loss": 1.010872683706321,
+      "val_macro_f1": 0.5328849084883325
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.514642474412675,
+      "val_loss": 1.0270550897830748,
+      "val_macro_f1": 0.545807822340817
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.4103299740837073,
+      "val_loss": 1.1109184443872535,
+      "val_macro_f1": 0.6015568456444055
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.28884714090053776,
+      "val_loss": 1.099863880896162,
+      "val_macro_f1": 0.6381746196804531
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.1887273328172801,
+      "val_loss": 1.0746143267320305,
+      "val_macro_f1": 0.621295641644407
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.12422506653318491,
+      "val_loss": 1.169562377279739,
+      "val_macro_f1": 0.6392322922220169
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.08076181189751036,
+      "val_loss": 1.247512931123786,
+      "val_macro_f1": 0.6607131421664413
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.05249268976523962,
+      "val_loss": 1.362860293563353,
+      "val_macro_f1": 0.6162222543220593
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.03499782135682709,
+      "val_loss": 1.4650027291021686,
+      "val_macro_f1": 0.6260637919267769
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.02761369293063562,
+      "val_loss": 1.4165873474406072,
+      "val_macro_f1": 0.6292459578229338
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "id": "E3_s44",
+  "name": "XLM-R base (fine-tuned)",
+  "family": "transformer",
+  "research_question": "RQ3",
+  "description": "Seed-variance rerun of E3.",
+  "fast_mode": false,
+  "seed": 44,
+  "timestamp_utc": "2026-09-29T02:41:36Z",
+  "hyperparameters": {
+    "model_id": "xlm-roberta-base",
+    "lr": 2e-05,
+    "epochs": 3,
+    "max_length": 512,
+    "batch_size": 16,
+    "batch_size_requested": 16,
+    "n_gpu": 1,
+    "effective_batch": 16,
+    "group_by_length": true,
+    "class_weighted_loss": true,
+    "grad_accum": 1,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "fp16": true,
+    "text_mode": "title_content"
+  },
+  "n_train": 6863,
+  "n_val": 763,
+  "n_test": 4254,
+  "val_metrics": {
+    "accuracy": 0.28833551769331583,
+    "macro_f1": 0.13212819183552918,
+    "weighted_f1": 0.2639008512359168
+  },
+  "test_metrics": {
+    "accuracy": 0.32886694875411376,
+    "macro_f1": 0.15012027508029338,
+    "weighted_f1": 0.27212571861617674
+  },
+  "test_macro_f1_ci95": [
+    0.14414119149011234,
+    0.15600512325317453
+  ],
+  "per_class_test": [
+    {
+      "class": "politics",
+      "precision": 0.2470076169749728,
+      "recall": 0.5135746606334841,
+      "f1": 0.33357825128581925,
+      "support": 442
+    },
+    {
+      "class": "sport",
+      "precision": 0.785329018338727,
+      "recall": 0.896551724137931,
+      "f1": 0.8372627947096032,
+      "support": 812
+    },
+    {
+      "class": "economy",
+      "precision": 0.06821705426356589,
+      "recall": 0.1981981981981982,
+      "f1": 0.10149942329873125,
+      "support": 222
+    },
+    {
+      "class": "health",
+      "precision": 0.13312693498452013,
+      "recall": 0.134375,
+      "f1": 0.13374805598755832,
+      "support": 320
+    },
+    {
+      "class": "entertainment",
+      "precision": 0.6666666666666666,
+      "recall": 0.02122641509433962,
+      "f1": 0.04114285714285714,
+      "support": 848
+    },
+    {
+      "class": "history",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 12
+    },
+    {
+      "class": "technology",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 152
+    },
+    {
+      "class": "tourism",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 152
+    },
+    {
+      "class": "culture",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 203
+    },
+    {
+      "class": "fashion",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 151
+    },
+    {
+      "class": "religion",
+      "precision": 0.15762273901808785,
+      "recall": 0.3641791044776119,
+      "f1": 0.2200180342651037,
+      "support": 335
+    },
+    {
+      "class": "environment",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 175
+    },
+    {
+      "class": "education",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 70
+    },
+    {
+      "class": "relationship",
+      "precision": 0.3395931142410016,
+      "recall": 0.6027777777777777,
+      "f1": 0.4344344344344344,
+      "support": 360
+    }
+  ],
+  "train_seconds": 603.5,
+  "n_parameters": 278054414,
+  "inference_ms_per_article": 7.484,
+  "peak_gpu_mb": 14064.951296,
+  "predictions_file": "results/predictions/seeds/E3_s44.csv",
+  "notes": null
+}

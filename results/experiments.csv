@@ -1,4 +1,10 @@
 id,model,family,RQ,val_macro_f1,test_macro_f1,test_ci95_low,test_ci95_high,test_accuracy,test_weighted_f1,params,train_s,infer_ms,fast_mode
-E1,TF-IDF char 2-5 grams + LR,classical,RQ1,0.6995,0.587,0.5705,0.6027,0.7261,0.73,1359736,234.61,0.051,False
-B1,TF-IDF word 1-2 grams + LR,classical,baseline,0.6391,0.5109,0.4931,0.5266,0.6921,0.6794,2800014,119.24,0.012,False
-B0,Majority class,baseline,floor,0.0274,0.0134,0.0124,0.0146,0.1039,0.0196,1,0.001,,False
+E4,AfroXLMR base (fine-tuned),transformer,RQ3,0.6526,0.6143,0.5978,0.6309,0.7569,0.7559,278054414,605.6,7.541,False
+E1,TF-IDF char 2-5 grams + LR,classical,RQ1,0.6995,0.587,0.5705,0.6027,0.7261,0.73,1359736,166.81,0.034,False
+A2,E4 — max_length 256,transformer,ablation,0.6105,0.575,0.5594,0.5909,0.7287,0.727,278054414,375.8,3.633,False
+E2b,BiLSTM (fastText embeddings),recurrent,RQ2,0.6707,0.5262,0.5084,0.5427,0.6911,0.6849,22136618,85.3,0.357,False
+B1,TF-IDF word 1-2 grams + LR,classical,baseline,0.6391,0.5115,0.4936,0.5276,0.6925,0.6803,2800014,100.94,0.006,False
+E2a,BiLSTM (random embeddings),recurrent,RQ2,0.573,0.4419,0.424,0.4584,0.5907,0.5986,22136618,76.5,0.36,False
+A1,E4 — title only,transformer,ablation,0.4494,0.4213,0.4088,0.4328,0.6439,0.6194,278054414,194.1,0.671,False
+E3,XLM-R base (fine-tuned),transformer,RQ3,0.3671,0.3603,0.3498,0.371,0.614,0.57,278054414,614.0,7.513,False
+B0,Majority class,baseline,floor,0.0274,0.0134,0.0124,0.0146,0.1039,0.0196,1,0.002,,False

@@ -1,0 +1,244 @@
+{
+  "id": "E2b_s43",
+  "name": "BiLSTM (fastText embeddings)",
+  "family": "recurrent",
+  "research_question": "RQ2",
+  "description": "Seed-variance rerun of E2b.",
+  "fast_mode": false,
+  "seed": 43,
+  "timestamp_utc": "2026-09-29T02:06:07Z",
+  "hyperparameters": {
+    "embed_dim": 300,
+    "hidden_dim": 128,
+    "num_layers": 1,
+    "bidirectional": true,
+    "dropout": 0.3,
+    "max_tokens": 400,
+    "min_freq": 2,
+    "lr": 0.001,
+    "batch_size": 64,
+    "epochs": 15,
+    "patience": 3,
+    "grad_clip": 1.0,
+    "class_weighted_loss": true,
+    "vocab_size": 72309,
+    "embeddings": "fastText",
+    "epochs_run": 15,
+    "best_val_macro_f1": 0.6409747511846903
+  },
+  "n_train": 6863,
+  "n_val": 763,
+  "n_test": 4254,
+  "val_metrics": {
+    "accuracy": 0.7418086500655308,
+    "macro_f1": 0.6409747511846903,
+    "weighted_f1": 0.7385807905224768
+  },
+  "test_metrics": {
+    "accuracy": 0.6760695815702867,
+    "macro_f1": 0.49987309842640804,
+    "weighted_f1": 0.6607006397409891
+  },
+  "test_macro_f1_ci95": [
+    0.4814860985438765,
+    0.5182157079014087
+  ],
+  "per_class_test": [
+    {
+      "class": "politics",
+      "precision": 0.6057142857142858,
+      "recall": 0.7194570135746606,
+      "f1": 0.6577042399172699,
+      "support": 442
+    },
+    {
+      "class": "sport",
+      "precision": 0.9377382465057179,
+      "recall": 0.9088669950738916,
+      "f1": 0.9230769230769231,
+      "support": 812
+    },
+    {
+      "class": "economy",
+      "precision": 0.36363636363636365,
+      "recall": 0.6846846846846847,
+      "f1": 0.475,
+      "support": 222
+    },
+    {
+      "class": "health",
+      "precision": 0.5611702127659575,
+      "recall": 0.659375,
+      "f1": 0.6063218390804598,
+      "support": 320
+    },
+    {
+      "class": "entertainment",
+      "precision": 0.7349397590361446,
+      "recall": 0.7912735849056604,
+      "f1": 0.7620670073821693,
+      "support": 848
+    },
+    {
+      "class": "history",
+      "precision": 0.056179775280898875,
+      "recall": 0.4166666666666667,
+      "f1": 0.09900990099009901,
+      "support": 12
+    },
+    {
+      "class": "technology",
+      "precision": 0.6291390728476821,
+      "recall": 0.625,
+      "f1": 0.6270627062706271,
+      "support": 152
+    },
+    {
+      "class": "tourism",
+      "precision": 0.8947368421052632,
+      "recall": 0.2236842105263158,
+      "f1": 0.35789473684210527,
+      "support": 152
+    },
+    {
+      "class": "culture",
+      "precision": 0.75,
+      "recall": 0.1625615763546798,
+      "f1": 0.26720647773279355,
+      "support": 203
+    },
+    {
+      "class": "fashion",
+      "precision": 0.8076923076923077,
+      "recall": 0.2781456953642384,
+      "f1": 0.41379310344827586,
+      "support": 151
+    },
+    {
+      "class": "religion",
+      "precision": 0.7296416938110749,
+      "recall": 0.6686567164179105,
+      "f1": 0.6978193146417445,
+      "support": 335
+    },
+    {
+      "class": "environment",
+      "precision": 0.90625,
+      "recall": 0.1657142857142857,
+      "f1": 0.28019323671497587,
+      "support": 175
+    },
+    {
+      "class": "education",
+      "precision": 0.17391304347826086,
+      "recall": 0.05714285714285714,
+      "f1": 0.08602150537634409,
+      "support": 70
+    },
+    {
+      "class": "relationship",
+      "precision": 0.6412825651302605,
+      "recall": 0.8888888888888888,
+      "f1": 0.7450523864959255,
+      "support": 360
+    }
+  ],
+  "train_seconds": 86.6,
+  "n_parameters": 22136618,
+  "inference_ms_per_article": 0.372,
+  "peak_gpu_mb": 12319.350784,
+  "predictions_file": "results/predictions/seeds/E2b_s43.csv",
+  "notes": null,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.201308476443751,
+      "val_loss": 1.6663896564106173,
+      "val_macro_f1": 0.37563910621039415
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.5473468077872352,
+      "val_loss": 1.4299914080693557,
+      "val_macro_f1": 0.3425020084238505
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.2273991630773198,
+      "val_loss": 1.2369102514586943,
+      "val_macro_f1": 0.4239403927507061
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.9643845722311599,
+      "val_loss": 1.3502776866502875,
+      "val_macro_f1": 0.4947024335719639
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.8155580234305254,
+      "val_loss": 1.056679386377022,
+      "val_macro_f1": 0.5195182136647243
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.5746004523696661,
+      "val_loss": 1.0344977757721396,
+      "val_macro_f1": 0.5800581024409949
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.409099308287248,
+      "val_loss": 0.9614527634836899,
+      "val_macro_f1": 0.6012057450462854
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.3145715671153279,
+      "val_loss": 1.0876349802879643,
+      "val_macro_f1": 0.6067448592371644
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.2001677656180654,
+      "val_loss": 1.0125860941363194,
+      "val_macro_f1": 0.5989347358439591
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.11824000628159465,
+      "val_loss": 1.1799593912352115,
+      "val_macro_f1": 0.6206747102501159
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.09584911281014173,
+      "val_loss": 1.304048536176919,
+      "val_macro_f1": 0.6095101788825442
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.05710237671727127,
+      "val_loss": 1.326883969581924,
+      "val_macro_f1": 0.6409747511846903
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.03740018887197539,
+      "val_loss": 1.4739066859216552,
+      "val_macro_f1": 0.6132943162586354
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.023882202034251353,
+      "val_loss": 1.7318363061582434,
+      "val_macro_f1": 0.6109525354573073
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.020787273108996925,
+      "val_loss": 1.3995423508346627,
+      "val_macro_f1": 0.6268068538848997
+    }
+  ]
+}

@@ -6,7 +6,7 @@
   "description": "Character n-gram features (char_wb) with multinomial logistic regression.",
   "fast_mode": false,
   "seed": 42,
-  "timestamp_utc": "2026-09-25T10:14:30Z",
+  "timestamp_utc": "2026-09-29T01:17:23Z",
   "hyperparameters": {
     "C": 1.0,
     "C_grid": [
@@ -140,10 +140,10 @@
       "support": 360
     }
   ],
-  "train_seconds": 234.61,
+  "train_seconds": 166.81,
   "n_parameters": 1359736,
-  "inference_ms_per_article": 0.051,
-  "peak_gpu_mb": null,
+  "inference_ms_per_article": 0.034,
+  "peak_gpu_mb": 0.0,
   "predictions_file": "results/predictions/E1.csv",
   "notes": null
 }

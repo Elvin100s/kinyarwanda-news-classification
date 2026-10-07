@@ -1,0 +1,244 @@
+{
+  "id": "E2b",
+  "name": "BiLSTM (fastText embeddings)",
+  "family": "recurrent",
+  "research_question": "RQ2",
+  "description": "Same BiLSTM, embeddings initialised from fastText skip-gram trained on train split.",
+  "fast_mode": false,
+  "seed": 42,
+  "timestamp_utc": "2026-09-29T01:30:05Z",
+  "hyperparameters": {
+    "embed_dim": 300,
+    "hidden_dim": 128,
+    "num_layers": 1,
+    "bidirectional": true,
+    "dropout": 0.3,
+    "max_tokens": 400,
+    "min_freq": 2,
+    "lr": 0.001,
+    "batch_size": 64,
+    "epochs": 15,
+    "patience": 3,
+    "grad_clip": 1.0,
+    "class_weighted_loss": true,
+    "vocab_size": 72309,
+    "embeddings": "fastText",
+    "epochs_run": 15,
+    "best_val_macro_f1": 0.6707439010280281
+  },
+  "n_train": 6863,
+  "n_val": 763,
+  "n_test": 4254,
+  "val_metrics": {
+    "accuracy": 0.7522935779816514,
+    "macro_f1": 0.6707439010280281,
+    "weighted_f1": 0.7541358436396693
+  },
+  "test_metrics": {
+    "accuracy": 0.691114245416079,
+    "macro_f1": 0.526178327468877,
+    "weighted_f1": 0.6848508596532731
+  },
+  "test_macro_f1_ci95": [
+    0.5083833904008156,
+    0.5427274840035831
+  ],
+  "per_class_test": [
+    {
+      "class": "politics",
+      "precision": 0.5847457627118644,
+      "recall": 0.6244343891402715,
+      "f1": 0.6039387308533917,
+      "support": 442
+    },
+    {
+      "class": "sport",
+      "precision": 0.9385749385749386,
+      "recall": 0.9408866995073891,
+      "f1": 0.939729397293973,
+      "support": 812
+    },
+    {
+      "class": "economy",
+      "precision": 0.44542772861356933,
+      "recall": 0.6801801801801802,
+      "f1": 0.5383244206773619,
+      "support": 222
+    },
+    {
+      "class": "health",
+      "precision": 0.5337995337995338,
+      "recall": 0.715625,
+      "f1": 0.6114819759679573,
+      "support": 320
+    },
+    {
+      "class": "entertainment",
+      "precision": 0.7734627831715211,
+      "recall": 0.8455188679245284,
+      "f1": 0.8078873239436619,
+      "support": 848
+    },
+    {
+      "class": "history",
+      "precision": 0.04639175257731959,
+      "recall": 0.75,
+      "f1": 0.08737864077669903,
+      "support": 12
+    },
+    {
+      "class": "technology",
+      "precision": 0.6407185628742516,
+      "recall": 0.7039473684210527,
+      "f1": 0.670846394984326,
+      "support": 152
+    },
+    {
+      "class": "tourism",
+      "precision": 0.8275862068965517,
+      "recall": 0.3157894736842105,
+      "f1": 0.45714285714285713,
+      "support": 152
+    },
+    {
+      "class": "culture",
+      "precision": 0.6896551724137931,
+      "recall": 0.19704433497536947,
+      "f1": 0.3065134099616858,
+      "support": 203
+    },
+    {
+      "class": "fashion",
+      "precision": 0.9215686274509803,
+      "recall": 0.31125827814569534,
+      "f1": 0.46534653465346537,
+      "support": 151
+    },
+    {
+      "class": "religion",
+      "precision": 0.8271604938271605,
+      "recall": 0.6,
+      "f1": 0.6955017301038062,
+      "support": 335
+    },
+    {
+      "class": "environment",
+      "precision": 0.6888888888888889,
+      "recall": 0.17714285714285713,
+      "f1": 0.2818181818181818,
+      "support": 175
+    },
+    {
+      "class": "education",
+      "precision": 0.15625,
+      "recall": 0.07142857142857142,
+      "f1": 0.09803921568627451,
+      "support": 70
+    },
+    {
+      "class": "relationship",
+      "precision": 0.7411764705882353,
+      "recall": 0.875,
+      "f1": 0.802547770700637,
+      "support": 360
+    }
+  ],
+  "train_seconds": 85.3,
+  "n_parameters": 22136618,
+  "inference_ms_per_article": 0.357,
+  "peak_gpu_mb": 1214.608384,
+  "predictions_file": "results/predictions/E2b.csv",
+  "notes": "RQ2 treatment: identical to E2a except embedding initialisation.",
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.1945470010992842,
+      "val_loss": 1.6853782085416202,
+      "val_macro_f1": 0.3517846316127375
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.5220594316673195,
+      "val_loss": 1.3653814412975687,
+      "val_macro_f1": 0.4378418440190889
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.1851580483945034,
+      "val_loss": 1.3815505076517127,
+      "val_macro_f1": 0.4016387736190104
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.0085147462137132,
+      "val_loss": 1.1328275606797844,
+      "val_macro_f1": 0.48369872236315625
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.7957755733331855,
+      "val_loss": 1.1453163520692997,
+      "val_macro_f1": 0.5312551357024222
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.7103690996855111,
+      "val_loss": 1.0014900712791932,
+      "val_macro_f1": 0.525581219003907
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.48668400893558067,
+      "val_loss": 0.917715058101739,
+      "val_macro_f1": 0.6017750688359633
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.34121443684935204,
+      "val_loss": 0.8519584823248427,
+      "val_macro_f1": 0.6292307525051725
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.2425679379921343,
+      "val_loss": 1.0468735781597123,
+      "val_macro_f1": 0.6352255282416163
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.1592977992095445,
+      "val_loss": 1.1928042837395425,
+      "val_macro_f1": 0.582991349575523
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.11708872385689986,
+      "val_loss": 1.2413641012824221,
+      "val_macro_f1": 0.6553985548648578
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.07804209393404753,
+      "val_loss": 1.1224690282016718,
+      "val_macro_f1": 0.6707439010280281
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.05893899199953019,
+      "val_loss": 1.2280500391363942,
+      "val_macro_f1": 0.6538560189101862
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.03287395562867494,
+      "val_loss": 1.3688225699283505,
+      "val_macro_f1": 0.6579738280502834
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.02246228016189103,
+      "val_loss": 1.449428458982495,
+      "val_macro_f1": 0.6498578705581514
+    }
+  ]
+}

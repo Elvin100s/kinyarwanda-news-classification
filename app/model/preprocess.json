@@ -1,0 +1,30 @@
+{
+  "model_file": "e1_pipeline.joblib",
+  "labels": [
+    "politics",
+    "sport",
+    "economy",
+    "health",
+    "entertainment",
+    "history",
+    "technology",
+    "tourism",
+    "culture",
+    "fashion",
+    "religion",
+    "environment",
+    "education",
+    "relationship"
+  ],
+  "text": "title + ' . ' + content (the app receives a single text box)",
+  "unicode_normalisation": "NFC",
+  "lowercase": true,
+  "url_re": "https?://\\S+|www\\.\\S+",
+  "email_re": "\\S+@\\S+\\.\\S+",
+  "num_re": "\\b\\d[\\d.,]*\\b",
+  "keep_re": "[^\\w\\s'’<>]",
+  "url_token": "<url>",
+  "email_token": "<email>",
+  "num_token": "<num>",
+  "scikit_learn_version": "1.8.0"
+}

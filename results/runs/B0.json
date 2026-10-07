@@ -6,7 +6,7 @@
   "description": "Always predicts the most frequent training class.",
   "fast_mode": false,
   "seed": 42,
-  "timestamp_utc": "2026-09-25T10:08:30Z",
+  "timestamp_utc": "2026-09-29T01:12:50Z",
   "hyperparameters": {
     "majority_class": "politics"
   },
@@ -127,10 +127,10 @@
       "support": 360
     }
   ],
-  "train_seconds": 0.001,
+  "train_seconds": 0.002,
   "n_parameters": 1,
   "inference_ms_per_article": null,
-  "peak_gpu_mb": null,
+  "peak_gpu_mb": 0.0,
   "predictions_file": "results/predictions/B0.csv",
   "notes": "Floor. Demonstrates the accuracy/macro-F1 gap on imbalanced data."
 }

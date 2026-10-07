@@ -1,0 +1,150 @@
+{
+  "id": "E3",
+  "name": "XLM-R base (fine-tuned)",
+  "family": "transformer",
+  "research_question": "RQ3",
+  "description": "General multilingual encoder fine-tuned for 14-way topic classification.",
+  "fast_mode": false,
+  "seed": 42,
+  "timestamp_utc": "2026-09-29T01:41:47Z",
+  "hyperparameters": {
+    "model_id": "xlm-roberta-base",
+    "lr": 2e-05,
+    "epochs": 3,
+    "max_length": 512,
+    "batch_size": 16,
+    "batch_size_requested": 16,
+    "n_gpu": 1,
+    "effective_batch": 16,
+    "group_by_length": true,
+    "class_weighted_loss": true,
+    "grad_accum": 1,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "fp16": true,
+    "text_mode": "title_content"
+  },
+  "n_train": 6863,
+  "n_val": 763,
+  "n_test": 4254,
+  "val_metrics": {
+    "accuracy": 0.5740498034076016,
+    "macro_f1": 0.36713415645779107,
+    "weighted_f1": 0.5626322583208225
+  },
+  "test_metrics": {
+    "accuracy": 0.614010343206394,
+    "macro_f1": 0.3602625535914105,
+    "weighted_f1": 0.5700363737128944
+  },
+  "test_macro_f1_ci95": [
+    0.3498483623904879,
+    0.3710267744998151
+  ],
+  "per_class_test": [
+    {
+      "class": "politics",
+      "precision": 0.4863481228668942,
+      "recall": 0.6447963800904978,
+      "f1": 0.5544747081712063,
+      "support": 442
+    },
+    {
+      "class": "sport",
+      "precision": 0.9044740024183797,
+      "recall": 0.9211822660098522,
+      "f1": 0.912751677852349,
+      "support": 812
+    },
+    {
+      "class": "economy",
+      "precision": 0.2860824742268041,
+      "recall": 0.5,
+      "f1": 0.3639344262295082,
+      "support": 222
+    },
+    {
+      "class": "health",
+      "precision": 0.4243243243243243,
+      "recall": 0.490625,
+      "f1": 0.45507246376811594,
+      "support": 320
+    },
+    {
+      "class": "entertainment",
+      "precision": 0.706243602865916,
+      "recall": 0.8136792452830188,
+      "f1": 0.7561643835616438,
+      "support": 848
+    },
+    {
+      "class": "history",
+      "precision": 0.02,
+      "recall": 0.08333333333333333,
+      "f1": 0.03225806451612903,
+      "support": 12
+    },
+    {
+      "class": "technology",
+      "precision": 0.43621399176954734,
+      "recall": 0.6973684210526315,
+      "f1": 0.5367088607594936,
+      "support": 152
+    },
+    {
+      "class": "tourism",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 152
+    },
+    {
+      "class": "culture",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 203
+    },
+    {
+      "class": "fashion",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 151
+    },
+    {
+      "class": "religion",
+      "precision": 0.6135770234986945,
+      "recall": 0.7014925373134329,
+      "f1": 0.6545961002785515,
+      "support": 335
+    },
+    {
+      "class": "environment",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 175
+    },
+    {
+      "class": "education",
+      "precision": 0.045454545454545456,
+      "recall": 0.02857142857142857,
+      "f1": 0.03508771929824561,
+      "support": 70
+    },
+    {
+      "class": "relationship",
+      "precision": 0.7176165803108808,
+      "recall": 0.7694444444444445,
+      "f1": 0.7426273458445041,
+      "support": 360
+    }
+  ],
+  "train_seconds": 614.0,
+  "n_parameters": 278054414,
+  "inference_ms_per_article": 7.513,
+  "peak_gpu_mb": 7364.126208,
+  "predictions_file": "results/predictions/E3.csv",
+  "notes": "RQ3 control: multilingual pretraining without African-specific adaptation."
+}
