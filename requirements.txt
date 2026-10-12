@@ -7,7 +7,7 @@
 #     python -m venv .venv && source .venv/bin/activate
 #     pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
 #
-# On Colab (GPU), drop the --extra-index-url so pip resolves the CUDA build of torch.
+# On Kaggle or Colab (GPU), drop the --extra-index-url so pip resolves the CUDA build of torch.
 
 # ---- deep learning ----
 torch==2.14.0
@@ -20,7 +20,7 @@ sentencepiece==0.2.2          # XLM-R / AfroXLMR use a SentencePiece tokenizer
 # ---- data ----
 datasets==4.8.5
 pyarrow==25.0.1
-# Fallback only: if the KINNEWS loading routes in Section 3 all fail on datasets>=3,
+# Fallback only: if every KINNEWS loading route in Section 1 fails on datasets>=3,
 # `pip install "datasets<3.0"` restores script-based loading with trust_remote_code=True.
 
 # ---- classical ML, embeddings, scientific stack ----
@@ -32,9 +32,8 @@ pandas==2.2.3
 matplotlib==3.10.1
 seaborn==0.13.2
 
-# ---- hub + notebook tooling ----
+# ---- notebook tooling ----
 huggingface-hub==0.36.2       # pinned <1.0 by transformers 4.57
-jupytext==1.19.5              # .py (percent) <-> .ipynb round trip
 nbformat==5.10.4
 ipykernel==7.2.0
 

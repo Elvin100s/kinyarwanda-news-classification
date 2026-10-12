@@ -5,14 +5,12 @@ __pycache__/
 venv/
 .ipynb_checkpoints/
 
-# Data: raw corpora are re-downloadable; keep only splits + small derived files
+# Data: the raw corpus is re-downloaded by the notebook; only the split indices and the
+# audit evidence behind the README's claims are committed.
 data/*
-!data/.gitkeep
 !data/splits.json
-# Audit outputs are small and are the evidence behind the README's claims, so they ship.
 !data/audit/
 data/audit/*
-!data/audit/.gitkeep
 !data/audit/audit_summary.json
 !data/audit/label_spot_check.csv
 !data/audit/confident_mistakes.csv
@@ -21,36 +19,28 @@ data/audit/*
 !data/audit/manual_review_TEMPLATE.csv
 !data/audit/manual_review.csv
 
-# Model artefacts and caches (large, re-creatable)
+# Model checkpoints and caches (large, re-creatable)
 models/
 checkpoints/
+hf_cache/
+.cache/
 *.bin
 *.safetensors
 *.pt
 *.kv
-*.model
-hf_cache/
-.cache/
 
-# Results: JSON + csv are committed (they are the evidence trail).
-# Prediction dumps can be large but are required by the PRD, so they stay.
+# Fast-mode smoke-test outputs: never reported
+results/runs/_fast/
+results/predictions/_fast/
+results/experiments_FAST.csv
 
 # OS / editor
 .DS_Store
 *.swp
 
-# Working documents kept local only (README.md is the sole tracked root markdown)
-/PRD.md
-/DECISIONS.md
-/ATTRIBUTION.md
-/DEFENSE_NOTES.md
-/VIDEO_SCRIPT.md
+# Personal working files, kept local only
 /COLAB_RUNBOOK.md
-
-# Fast-mode smoke-test outputs: never reportable, regenerated on demand
-results/runs/_fast/
-results/predictions/_fast/
-results/experiments_FAST.csv
-report_materials/tables_FAST.md
+/docs/
+/report/build_report.js
 /video_script/
 /video_clips/

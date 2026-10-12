@@ -12,7 +12,7 @@ analysis and a Gradio web app.
 | Live app | https://huggingface.co/spaces/Elvin100S/kinyarwanda-news-classifier |
 | Demo video | `[[TODO: video URL]]` |
 | Report | [`report/Kinyarwanda_News_Classification_Report.docx`](report/) (PDF preview alongside) |
-| Final executed notebook | [`notebooks/kinyarwanda_news_classification_executed_kaggle.ipynb`](notebooks/) |
+| Notebook (final run, with outputs) | [`notebooks/kinyarwanda_news_classification.ipynb`](notebooks/kinyarwanda_news_classification.ipynb) |
 
 ## Problem and users
 
@@ -114,26 +114,22 @@ E2b beats E2a and E4 beats E3 on every seed.
 
 ## Reproducing this work
 
-The notebook source of truth is `notebooks/kinyarwanda_news_classification.py` (jupytext);
-`notebooks/kinyarwanda_news_classification.ipynb` is generated from it.
+`notebooks/kinyarwanda_news_classification.ipynb` is the notebook exactly as it ran on Kaggle,
+with all outputs.
 
 **On Kaggle or Colab (GPU, full run):** open the notebook, choose a T4 GPU (and Internet on, on
-Kaggle), set `CONFIG["fast_mode"] = False` in Section 0.2, and run all cells — about 1 h 45 min.
-`notebooks/kinyarwanda_news_classification_colab.ipynb` is a ready-made Colab copy that saves to
-Google Drive so a dropped session resumes. Every experiment skips itself if its result JSON
-exists.
+Kaggle) and run all cells — about 1 h 45 min. On Colab, Section 0.3 saves to Google Drive so a
+dropped session resumes. Every experiment skips itself if its result JSON exists.
 
-**Locally (CPU smoke test):**
+**Locally (CPU smoke test):** set `CONFIG["fast_mode"] = True` in Section 0.2. The notebook then
+subsamples the data and runs in about ten minutes on CPU; its results go to
+`results/runs/_fast/` and are never reported.
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
-jupytext --to ipynb notebooks/kinyarwanda_news_classification.py
 jupyter lab notebooks/kinyarwanda_news_classification.ipynb
 ```
-
-With `fast_mode = True` (the default) the notebook subsamples the data and runs in about ten
-minutes on CPU; its results go to `results/runs/_fast/` and are never reported.
 
 ## The web app
 
@@ -155,19 +151,15 @@ python app/app.py
 ## Repository structure
 
 ```
-README.md  requirements.txt  references.bib
-notebooks/  kinyarwanda_news_classification.py              source of truth (jupytext)
-            kinyarwanda_news_classification.ipynb           generated
-            kinyarwanda_news_classification_colab.ipynb     Colab full-run copy
-            kinyarwanda_news_classification_executed_kaggle.ipynb   final run, with outputs
-data/       splits.json, audit/                              split indices, audit evidence
-figures/    01–08 *.png                                      figures from the final run
+README.md  requirements.txt
+notebooks/  kinyarwanda_news_classification.ipynb    the full pipeline, final Kaggle run with outputs
+data/       splits.json, audit/                       split indices, audit evidence
+figures/    01–08 *.png from the final run; 09 is a screenshot of the deployed app
 results/    runs/*.json (+ runs/seeds/), experiments.csv, tables.md, seed_variance.json,
-            significance_tests.json, confidence_threshold.json, latency.json, model_card.md
+            significance_tests.json, confidence_threshold.json, latency.json
 app/        app.py, requirements.txt, examples.json, model_meta.json,
             model/e1_pipeline.joblib, model/preprocess.json
-report/     report (.docx + PDF preview) and the script that builds it
-docs/       notebook_explanations.md — full rationale for every step
+report/     the report (.docx + PDF)
 scripts/    summarise_manual_review.py — summarises the manual label review
 ```
 
@@ -197,7 +189,7 @@ Full discussion and future work: report, Section 8.
 
 ## References
 
-See `references.bib` (27 entries) and the report's reference list. Key sources:
+The full list (27 references) is in the report. Key sources:
 
 - Niyongabo, R. A., Hong, Q., Kreutzer, J., & Huang, L. (2020). KINNEWS and KIRNEWS. *COLING 2020*.
 - Conneau, A., et al. (2020). Unsupervised cross-lingual representation learning at scale. *ACL 2020*.
