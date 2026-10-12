@@ -1,0 +1,31 @@
+true,predicted,candidate_causes,snippet
+politics,culture,unclassified,U Bubiligi: Abanyarwanda bahuriye mu rugendo rwa ‘‘Balade Santé’’ ku nshuro ya gatanu (Amafoto)
+religion,politics,unclassified,Perezida Kagame arakibaza uburyo abanyamadini muri Jenoside bahindutse abaranga b’aho abicwa bari
+culture,history,topic overlap,"Inkomoko y’amazina y’uduce tumwe two muri Kigali nka Nyarugenge, Kacyiru n’utundi"
+culture,religion,topic overlap,Padiri Amerika agiye kumurika igitabo gitanga umucyo ku mpaka z’urudaca zishingiye  kuri Bibiliya
+environment,health,topic overlap; truncation (beyond max_length),#GumaMuRugo: Imyuka ihumanya ikirere yagabanutseho 24% i Kigali
+politics,entertainment,unclassified, Abanyabrasil basabye imbabazi Brigitte Macron watutswe na perezida wabo 
+entertainment,religion,unclassified,Pasiteri yikomye Abahanzi bafashije Museveni mu matora
+tourism,economy,truncation (beyond max_length),"Icyerekezo cya Onomo, hoteli imaze umwaka ku isoko ry’u Rwanda- Ikiganiro na Nizey Emile uyiyobora"
+religion,health,unclassified,Musenyeri Kambanda yikomye abagore baboneza urubyaro bakoresheje imiti
+health,relationship,unclassified, Afurika y’Epfo: Bakura amenyo y’imbere ngo biyongerere ubwiza n’igikundiro 
+politics,economy,topic overlap,Abanyarwanda baba muri Malawi batanze miliyoni 12 Frw zo gufasha abagizweho ingaruka na Coronavirus
+education,relationship,truncation (beyond max_length), Ibisobanuro by’inzozi zitandukanye zirimo inzuki  
+fashion,entertainment,topic overlap,Kardashian agiye guhindura izina ry’imyambaro y’imbere yatumye yamaganwa n’Abayapani
+economy,technology,truncation (beyond max_length),Imishinga 12 y’ishoramari yashinze imizi mu Rwanda mu 2019
+culture,history,topic overlap; truncation (beyond max_length),"Imyaka 26 irashize umwamikazi wa nyuma w’u Rwanda, Rosalie Gicanda yishwe "
+entertainment,fashion,topic overlap; rare vocabulary / proper names,Miss Uwase  yiyerekanye mu cyiciro gikomeye cyo kwerekana imiterere y’umubiri [ REBA VIDEO]
+sport,entertainment,unclassified,Gerrard yarishije imitima abakunzi ba Liverpool
+relationship,religion,unclassified,Umukobwa wa Apôtre Masasu yasabwe anakobwa n’umusore bitegura kurushinga
+sport,economy,unclassified,Urwishe yambwa ruracyayirimo- “Messie yakatiwe gufungwa amezi 21”
+entertainment,health,unclassified,COVID-19 : Umuhanzi Bobi Wine akaba n’umunyaporitiki ukomeye yasohoye indirimbo kuri Coronavirus
+tourism,economy,unclassified,Abagana hoteli na za restaurant bagiye kujya bandikwa
+religion,politics,unclassified,Perezida Kagame yifurije Abayisilamu Umunsi mwiza
+politics,entertainment,unclassified,"Michel Mpambara, umuhanzi ufite inzozi zo gushinga ishuri ry’ikinamico zo gusetsa mu Rwanda"
+economy,technology,unclassified,Uruhare rwa  Airtel Rwanda mu guhererekanya amafaranga mu  ikoranabuhanga
+sport,politics,unclassified, Xénophobe: Abanya-Nigeria ba mbere bageze i Lagos bahunze urugomo rw’Abanyafurika y’Epfo 
+religion,health,unclassified,Papa Francis yagize icyo avuka kuburyo  yakiriwe muri Afurika
+politics,relationship,unclassified,"U Butaliyani: Berlusconi w’imyaka 83 yatandukanye n’umugore w’imyaka 34, yishumbusha ukiri muto"
+religion,education,unclassified,"Kiliziya Gatolika irifuza ko ingengabihe y’amashuri ihinduka, umwaka ukajya utangira muri Nzeri"
+tourism,economy,unclassified,Paris Saint Germain yiyongereye kuri Arsenal mu kwamamaza Visit Rwanda
+politics,history,topic overlap; truncation (beyond max_length),U Bwongereza: Abarokotse Jenoside bagaragaje imyirondoro y’abajenosideri bacyidegembya

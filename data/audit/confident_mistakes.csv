@@ -1,0 +1,11 @@
+id,true,predicted,correct,snippet,top1_label,top1_prob,top2_label,top2_prob,top3_label,top3_prob,true_i,pred_i,n_words,len_bucket,size_band
+48,entertainment,sport,False,Tombora yongeye guhuza Rayon Sports na AS Kigali,sport,0.9757,entertainment,0.0077,economy,0.0023,4,1,271,250–500,large (500+)
+107,entertainment,sport,False,Umutoza Mashami Vincent yaretse umuryango abakinnyi 5 mu Mavubi yitegura guhangana na Côte d’Ivoire,sport,0.9547,entertainment,0.0149,religion,0.0044,4,1,341,250–500,large (500+)
+76,entertainment,sport,False,Intego za APR Fc ni ukurenga aho Rayon Sports yageze-Mugiraneza Migy,sport,0.9471,entertainment,0.0148,culture,0.0046,4,1,239,100–250,large (500+)
+3471,entertainment,religion,False,Shekinah Worship Team Masoro yamuritse album mu gitaramo cyamaze amasaha 12,religion,0.9328,entertainment,0.0297,culture,0.0062,4,10,438,250–500,large (500+)
+20,entertainment,sport,False,CECAFA Kagame Cup:Rayon Sports irimo abakinnyi barindwi bashya n’umutoza itangiye itsinda TP Mazembe[REBA AMAFOTO],sport,0.9267,entertainment,0.0227,history,0.0096,4,1,406,250–500,large (500+)
+1715,entertainment,sport,False, Rayon Sports yasezereye Manzi Thierry na Niyonzima Olivier Sefu ,sport,0.9225,entertainment,0.0216,politics,0.011,4,1,289,250–500,large (500+)
+2235,culture,religion,False, Icyo abanyamadini bavuze kuri Gitwaza wiyise ‘umuhanuzi uruta abandi’ ,religion,0.9161,culture,0.0141,relationship,0.0105,8,10,824,500–∞,small (<100)
+3505,entertainment,religion,False,Itorero New Life Bible Church ryateguye igiterane cyizitabirwa n’abashumba bakomeye muri Afurika,religion,0.8761,entertainment,0.0223,health,0.0188,4,10,214,100–250,large (500+)
+149,entertainment,relationship,False,Amagambo ababaza abakobwa iyo bayabwiwe n’abakunzi babo ibihe byose,relationship,0.8714,entertainment,0.0241,health,0.0229,4,13,570,500–∞,large (500+)
+2271,culture,religion,False," Rwagasana,Sibomana n’abandi bari bakurikiranyweho kunyereza umutungo wa ADEPR bambuwe ubupasitori  ",religion,0.8426,politics,0.0247,economy,0.0171,8,10,275,250–500,small (<100)

@@ -15,6 +15,11 @@ data/audit/*
 !data/audit/.gitkeep
 !data/audit/audit_summary.json
 !data/audit/label_spot_check.csv
+!data/audit/confident_mistakes.csv
+!data/audit/error_taxonomy.csv
+!data/audit/ood_probes.csv
+!data/audit/manual_review_TEMPLATE.csv
+!data/audit/manual_review.csv
 
 # Model artefacts and caches (large, re-creatable)
 models/
@@ -48,3 +53,4 @@ results/predictions/_fast/
 results/experiments_FAST.csv
 report_materials/tables_FAST.md
 /video_script/
+/video_clips/

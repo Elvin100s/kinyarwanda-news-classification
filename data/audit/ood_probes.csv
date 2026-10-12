@@ -1,0 +1,7 @@
+probe,text,top1,conf,top2,top3
+"Kinyarwanda, social-media register",Yooo ndabona iyi ngoma ni nziza cyane 😂 murakoze,entertainment,0.169,relationship,history
+English news sentence,The central bank raised interest rates by half a,entertainment,0.188,sport,history
+French news sentence,Le president a annonce une nouvelle reforme econ,entertainment,0.193,history,sport
+Kirundi (closely related language),Abanyagihugu barashima ivyo bakoze mu gihugu cab,politics,0.131,fashion,history
+Random characters,xkcd qzmp vvfl aaaa zzzz qqqq,entertainment,0.242,sport,history
+Empty-ish input,...,entertainment,0.196,sport,history
