@@ -9,7 +9,7 @@ analysis and a Gradio web app.
 
 | | |
 |---|---|
-| Live app | `[[TODO: deployed web application URL]]` |
+| Live app | https://huggingface.co/spaces/Elvin100S/kinyarwanda-news-classifier |
 | Demo video | `[[TODO: video URL]]` |
 | Report | [`report/Kinyarwanda_News_Classification_Report.docx`](report/) (PDF preview alongside) |
 | Final executed notebook | [`notebooks/kinyarwanda_news_classification_executed_kaggle.ipynb`](notebooks/) |

@@ -19,7 +19,9 @@ environment, education, relationship.
 
 The model is **E1 — TF-IDF character 2–5-grams + logistic regression**, selected on validation
 macro-F1 among the nine models compared in the project (test macro-F1 0.587, accuracy 72.6%).
-It is small (10.8 MB) and runs on a CPU, so the Space needs no GPU.
+It is small (10.8 MB) and runs on a CPU, so the Space needs no GPU. The Space uses the free
+ZeroGPU tier only because the free CPU tier was not available to this account; `app.py`
+declares the one `@spaces.GPU` function that tier requires but never calls it.
 
 ## Running locally
 
