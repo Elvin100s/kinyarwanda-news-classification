@@ -5,6 +5,7 @@ colorFrom: blue
 colorTo: green
 sdk: gradio
 sdk_version: 5.49.1
+python_version: "3.12"
 app_file: app.py
 pinned: false
 license: mit
@@ -12,19 +13,19 @@ license: mit
 
 # Kinyarwanda News Topic Classifier
 
-Classifies a Kinyarwanda news article into one of 14 topics: politics, sport, economy,
-health, entertainment, history, technology, tourism, culture, fashion, religion,
+Classifies a Kinyarwanda news article or headline into one of 14 topics: politics, sport,
+economy, health, entertainment, history, technology, tourism, culture, fashion, religion,
 environment, education, relationship.
 
-The model is loaded **from the Hugging Face Hub at startup**, not stored in this Space.
-Set the `MODEL_ID` environment variable (Settings → Variables) to point at it; it defaults
-to `REPLACE_ME/kinyarwanda-news-classifier`.
+The model is **E1 — TF-IDF character 2–5-grams + logistic regression**, selected on validation
+macro-F1 among the nine models compared in the project (test macro-F1 0.587, accuracy 72.6%).
+It is small (10.8 MB) and runs on a CPU, so the Space needs no GPU.
 
 ## Running locally
 
 ```bash
 pip install -r app/requirements.txt
-MODEL_ID=<username>/kinyarwanda-news-classifier python app/app.py
+python app/app.py
 ```
 
 ## Files
@@ -32,37 +33,33 @@ MODEL_ID=<username>/kinyarwanda-news-classifier python app/app.py
 | File | Purpose |
 |---|---|
 | `app.py` | The Gradio interface and inference code |
-| `model_meta.json` | Metrics and the validation-chosen confidence threshold (generated) |
-| `examples.json` | Real KINNEWS test articles, including one known failure (generated) |
+| `model/e1_pipeline.joblib` | Fitted TF-IDF vectoriser + logistic regression (one scikit-learn `Pipeline`) |
+| `model/preprocess.json` | The exact training preprocessing settings, applied to every input |
+| `model_meta.json` | Test metrics and the validation-chosen confidence threshold |
+| `examples.json` | Real KINNEWS test headlines, including a known failure and an English example |
 
-`model_meta.json` and `examples.json` are written by Section 8 of the notebook, so the
-numbers shown in the app trace back to an actual experiment rather than being typed here.
+All of these except `app.py` are written by Section 8 of the notebook, so the numbers shown in
+the app trace back to the experiment rather than being typed here.
 
 ## How a request flows through the app
 
-What happens between a user typing text and seeing three topics:
-
 ```
-  1. User types Kinyarwanda text into the Gradio textbox
-  2. Guard      empty / < 3 words  -> return a prompt, no model call
-  3. Normalise  preprocess_transformer: NFC + whitespace only
-                (or preprocess_classical, if the deployed model is sparse)
-  4. Tokenize   text -> input_ids + attention_mask, truncated to max_length
-  5. Forward    model(...) -> logits, shape [1, 14]
-  6. Softmax    logits -> probabilities summing to 1
-  7. Top-3      argsort, take three highest
-  8. Threshold  top probability < tau (chosen on VALIDATION) -> show warning
-  9. Render     Gradio Label component + the note
+  1. User types Kinyarwanda text into the textbox
+  2. Guard      empty / fewer than 3 words -> return a prompt, no model call
+  3. Normalise  NFC, lower-case, URLs / e-mails / numbers -> placeholder tokens,
+                punctuation removed except apostrophes   (same as training)
+  4. Features   TF-IDF over character 2-5-grams within word boundaries
+  5. Classify   logistic regression -> probability for each of the 14 topics
+  6. Top-3      the three most likely topics with their probabilities
+  7. Threshold  top probability < 0.46 (chosen on VALIDATION) -> low-confidence warning
 ```
 
-**Why there is a confidence threshold at all.** Section 7.6 of the notebook showed the model
-returns a topic for English, French, Kirundi and random characters alike. A softmax over 14
-classes cannot say "none of these". The threshold does not fix that — nothing in this
-architecture can — but it lets the interface tell the user when the model is near the edge
-of what it knows.
+**Why there is a confidence threshold at all.** The notebook's out-of-domain probes (Section
+7.6) showed the model returns a topic for English, French, Kirundi and random characters
+alike. A classifier over 14 topics cannot say "none of these"; the threshold lets the
+interface tell the user when the model is near the edge of what it knows.
 
 ## Known limitations
 
-The model cannot detect out-of-domain input: given English, French, Kirundi or random
-characters it still returns a Kinyarwanda news topic. The app shows a low-confidence note,
-but that is a hint rather than a guarantee. See the "About the model" tab.
+The model cannot detect out-of-domain input, rare topics (about 30 training articles each)
+are much weaker, some topics overlap, and it ignores word order. See the "About the model" tab.

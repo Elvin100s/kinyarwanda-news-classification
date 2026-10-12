@@ -137,13 +137,20 @@ minutes on CPU; its results go to `results/runs/_fast/` and are never reported.
 
 ## The web app
 
-`app/` contains a Gradio app: paste a Kinyarwanda article or headline and get the top three
-topics with probabilities, plus a warning when confidence is below the threshold chosen on
-validation (0.46). It ships example inputs from real test articles, including a known failure
-and an English out-of-domain example.
+`app/` is a Gradio app serving **E1**, the model selected on validation: paste a Kinyarwanda
+article or headline and get the top three topics with probabilities, plus a warning when the
+top probability is below the threshold chosen on validation (0.46). It ships example inputs
+from real test headlines, including a known failure and an English out-of-domain example.
 
-> **Status:** the app is being switched from a Transformer to the selected model, E1, which the
-> notebook saves as `app/model/e1_pipeline.joblib` with `app/model/preprocess.json`.
+The app loads `app/model/e1_pipeline.joblib` (TF-IDF vectoriser + logistic regression, 10.8 MB)
+and applies the training preprocessing from `app/model/preprocess.json`. Re-scoring the full
+official test set through the app's own code reproduces the notebook's E1 result exactly
+(macro-F1 0.5870, accuracy 0.7261). It needs no GPU.
+
+```bash
+pip install -r app/requirements.txt   # Python 3.12+
+python app/app.py
+```
 
 ## Repository structure
 
@@ -157,7 +164,8 @@ data/       splits.json, audit/                              split indices, audi
 figures/    01–08 *.png                                      figures from the final run
 results/    runs/*.json (+ runs/seeds/), experiments.csv, tables.md, seed_variance.json,
             significance_tests.json, confidence_threshold.json, latency.json, model_card.md
-app/        app.py, requirements.txt, examples.json, model_meta.json, model/preprocess.json
+app/        app.py, requirements.txt, examples.json, model_meta.json,
+            model/e1_pipeline.joblib, model/preprocess.json
 report/     report (.docx + PDF preview) and the script that builds it
 docs/       notebook_explanations.md — full rationale for every step
 scripts/    summarise_manual_review.py — summarises the manual label review

@@ -1,7 +1,9 @@
 """Gradio demo for the Kinyarwanda news topic classifier.
 
-Loads the model from the Hugging Face Hub (not from a file in this repo), so the Space
-stays small and the model can be updated independently of the app.
+Serves E1 — TF-IDF character 2-5-grams + logistic regression — the model selected on
+validation in the notebook. The notebook (Section 8.1) saves the fitted vectoriser and
+classifier as one scikit-learn Pipeline in model/, together with the exact preprocessing
+settings, so the app applies the same normalisation as training.
 
 Run locally:  python app/app.py
 """
@@ -9,115 +11,116 @@ Run locally:  python app/app.py
 from __future__ import annotations
 
 import json
-import os
 import re
 import time
 import unicodedata
 from pathlib import Path
 
 import gradio as gr
-import torch
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
+import joblib
+import numpy as np
 
-# --------------------------------------------------------------------------------------
-# Configuration
-# --------------------------------------------------------------------------------------
-MODEL_ID = os.environ.get("MODEL_ID", "REPLACE_ME/kinyarwanda-news-classifier")
-MAX_LENGTH = 512
+HERE = Path(__file__).parent
 MIN_WORDS = 3
 
-# Chosen on the VALIDATION split (see notebook Section 9.7), never on test. Falls back to
-# 0.50 if the metadata file is absent.
-_meta = Path(__file__).parent / "model_meta.json"
+# ---------------------------------------------------------------------------------------
+# Model and preprocessing, both written by the notebook
+# ---------------------------------------------------------------------------------------
+PRE = json.loads((HERE / "model" / "preprocess.json").read_text())
+PIPELINE = joblib.load(HERE / "model" / PRE["model_file"])
+LABELS = PRE["labels"]
+
+_meta = HERE / "model_meta.json"
 META = json.loads(_meta.read_text()) if _meta.exists() else {}
+# Chosen on the VALIDATION split (notebook Section 7.7); 0.50 if the file is absent.
 THRESHOLD = float(META.get("threshold", 0.50))
 
-LABELS = ["politics", "sport", "economy", "health", "entertainment", "history", "technology",
-          "tourism", "culture", "fashion", "religion", "environment", "education", "relationship"]
-
-# --------------------------------------------------------------------------------------
-# Model
-# --------------------------------------------------------------------------------------
-print(f"loading {MODEL_ID} ...")
-tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
-model = AutoModelForSequenceClassification.from_pretrained(MODEL_ID)
-model.eval()
-ID2LABEL = [model.config.id2label[i] for i in range(model.config.num_labels)] \
-    if getattr(model.config, "id2label", None) else LABELS
-print(f"loaded. {model.config.num_labels} classes, CPU inference.")
+URL_RE = re.compile(PRE["url_re"])
+EMAIL_RE = re.compile(PRE["email_re"])
+NUM_RE = re.compile(PRE["num_re"])
+KEEP_RE = re.compile(PRE["keep_re"])
 
 
 def preprocess(text: str) -> str:
-    """Match the notebook's transformer preprocessing exactly: NFC + whitespace only."""
-    return re.sub(r"\s+", " ", unicodedata.normalize("NFC", str(text))).strip()
+    """Identical to preprocess_classical in the notebook (Section 1.6)."""
+    text = unicodedata.normalize(PRE["unicode_normalisation"], str(text)).lower()
+    text = URL_RE.sub(f" {PRE['url_token']} ", text)
+    text = EMAIL_RE.sub(f" {PRE['email_token']} ", text)
+    text = NUM_RE.sub(f" {PRE['num_token']} ", text)
+    text = KEEP_RE.sub(" ", text)
+    return re.sub(r"\s+", " ", text).strip()
 
 
 def classify(text: str):
-    """Return (top-3 label->probability, status message)."""
-    text = preprocess(text or "")
-    if not text:
+    """Return (top-3 label -> probability, status message)."""
+    raw = (text or "").strip()
+    if not raw:
         return {}, "Enter a Kinyarwanda news article or headline to classify."
-    if len(text.split()) < MIN_WORDS:
-        return {}, (f"Only {len(text.split())} word(s). Give at least {MIN_WORDS} for a "
-                    "meaningful prediction — a headline is usually enough.")
+    n_words = len(raw.split())
+    if n_words < MIN_WORDS:
+        return {}, (f"Only {n_words} word(s). Give at least {MIN_WORDS} for a meaningful "
+                    "prediction — a headline is usually enough.")
 
     started = time.time()
-    with torch.no_grad():
-        enc = tokenizer(text, truncation=True, max_length=MAX_LENGTH, return_tensors="pt")
-        probs = torch.softmax(model(**enc).logits, dim=1)[0]
+    probs = PIPELINE.predict_proba([preprocess(raw)])[0]
     elapsed = (time.time() - started) * 1000
 
-    top = torch.topk(probs, k=min(3, len(probs)))
-    result = {ID2LABEL[i]: float(p) for p, i in zip(top.values, top.indices)}
-    best = float(top.values[0])
+    order = np.argsort(-probs)[:3]
+    classes = PIPELINE.classes_
+    result = {LABELS[int(classes[i])]: float(probs[i]) for i in order}
+    best = float(probs[order[0]])
 
-    n_tokens = int(enc["input_ids"].shape[1])
-    note = f"Predicted in {elapsed:.0f} ms from {n_tokens} subword tokens."
-    if n_tokens >= MAX_LENGTH:
-        note += f" Input was truncated at {MAX_LENGTH} tokens."
+    note = f"Predicted in {elapsed:.0f} ms from {n_words} words."
     if best < THRESHOLD:
         note = (f"**Low confidence ({best:.0%}).** This text may be outside what the model "
-                f"was trained on — it only knows Kinyarwanda *news* articles, and it will "
-                f"still name a topic for anything it is given.\n\n{note}")
+                f"was trained on — it only knows Kinyarwanda *news*, and it still names a "
+                f"topic for anything it is given.\n\n{note}")
     return result, note
 
 
-# --------------------------------------------------------------------------------------
-# Examples — real KINNEWS test articles, including a documented failure
-# --------------------------------------------------------------------------------------
-_ex = Path(__file__).parent / "examples.json"
+# ---------------------------------------------------------------------------------------
+# Examples — real KINNEWS test headlines (written by the notebook), incl. a known failure
+# ---------------------------------------------------------------------------------------
+_ex = HERE / "examples.json"
 EXAMPLES = json.loads(_ex.read_text()) if _ex.exists() else []
-EXAMPLE_TEXTS = [[e["text"]] for e in EXAMPLES] or [
-    ["Ikipe ya Rayon Sports yatsinze umukino wayo wa nyuma mu gikombe cy'amahoro."],
-    ["Minisiteri y'ubuzima yatangaje gahunda nshya yo kurwanya indwara z'ibyorezo."],
-]
+EXAMPLE_TEXTS = [[e["text"]] for e in EXAMPLES]
+EXAMPLE_LABELS = [e["label"] for e in EXAMPLES]
 
 ABOUT = f"""
 ## About this model
 
-Fine-tuned on **KINNEWS** (Niyongabo et al., 2020) — Kinyarwanda news articles from 20
-Rwandan sources, 14 topics, MIT licence.
+**E1 — TF-IDF character n-grams + logistic regression**, trained on **KINNEWS**
+(Niyongabo et al., 2020): Kinyarwanda news from fifteen news websites and five newspapers,
+14 topics, MIT licence. It was selected because it had the best validation macro-F1 of the
+nine models compared in the project.
 
-{META.get('about_table', '_Metrics are filled in from the notebook run._')}
+{META.get('about_table', '')}
 
 ### How it works
 
-Your text → SentencePiece tokenizer → Transformer encoder → `<s>` representation →
-linear layer → softmax over 14 topics. The three highest are shown.
+Your text is normalised (Unicode NFC, lower-case, numbers and links replaced by placeholder
+tokens, punctuation removed except apostrophes) exactly as in training. It is then split into
+overlapping character pieces of 2–5 letters within each word, weighted by TF-IDF, and a
+logistic regression scores all 14 topics. The three most likely are shown.
+
+Character pieces suit Kinyarwanda because one word stem appears in many forms
+(*umukino*, *imikino*, *abakinnyi*); the pieces they share let the model recognise the stem in
+all of them.
 
 ### Limitations you should know about
 
 - **It cannot tell when it is out of its depth.** Given English, French, Kirundi or random
-  characters, it still returns a Kinyarwanda news topic, sometimes confidently. The
-  low-confidence note (below {THRESHOLD:.0%}) is a hint, not a guarantee.
-- **Rare topics are much weaker.** Some classes had fewer than 40 training articles, and the
-  official test set over-represents exactly those. See the per-class table.
-- **Long articles are truncated** at {MAX_LENGTH} subword tokens; most KINNEWS articles are
-  longer than that, so the tail is unseen.
-- **Not for consequential decisions** about people, moderation, or language detection.
+  characters, it still returns a Kinyarwanda news topic. The low-confidence note (below
+  {THRESHOLD:.0%}, chosen on validation data) is a hint, not a guarantee.
+- **Rare topics are much weaker.** Some topics had only about 30 training articles after
+  removing duplicates; see the per-class table.
+- **Topics overlap.** Politics vs history, fashion vs entertainment and education vs
+  relationship are the most common confusions, and some source labels are inconsistent.
+- **It ignores word order** — it relies on which word pieces appear, not on sentence structure.
+- **Not for consequential decisions** about people, content moderation, or language detection.
 
-Built for an academic assignment. Full code, experiments and error analysis:
-see the linked repository.
+Built for an academic project. The code, experiments and error analysis are in the project
+repository.
 """
 
 with gr.Blocks(title="Kinyarwanda News Topic Classifier") as demo:
@@ -133,8 +136,9 @@ with gr.Blocks(title="Kinyarwanda News Topic Classifier") as demo:
             with gr.Column(scale=2):
                 out = gr.Label(num_top_classes=3, label="Top 3 topics")
                 msg = gr.Markdown()
-        gr.Examples(examples=EXAMPLE_TEXTS, inputs=inp,
-                    label="Examples (the last is a known failure case)")
+        if EXAMPLE_TEXTS:
+            gr.Examples(examples=EXAMPLE_TEXTS, inputs=inp, example_labels=EXAMPLE_LABELS,
+                        label="Examples from the test set (includes a known failure)")
         btn.click(classify, inputs=inp, outputs=[out, msg])
         inp.submit(classify, inputs=inp, outputs=[out, msg])
     with gr.Tab("About the model"):

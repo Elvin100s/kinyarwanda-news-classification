@@ -1,9 +1,8 @@
-# CPU-only pins for the Hugging Face Space. Deliberately lighter than the project's
-# root requirements.txt: the app only needs inference, not training or plotting.
---extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.14.0
-transformers==4.57.6
-tokenizers==0.22.2
-sentencepiece==0.2.2
-safetensors==0.8.0
+# CPU-only inference for the Gradio app / Hugging Face Space. These are the exact versions the
+# app was tested with; scikit-learn must match the version the model was saved with (1.8.0).
+# numpy 2.5 and scipy 1.18 need Python >= 3.12 (set as python_version in app/README.md).
+scikit-learn==1.8.0
+numpy==2.5.4
+scipy==1.18.1
+joblib==1.6.0
 gradio==5.49.1
