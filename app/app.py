@@ -23,6 +23,18 @@ import numpy as np
 HERE = Path(__file__).parent
 MIN_WORDS = 3
 
+# The Space runs on ZeroGPU hardware (the free tier for this account), which expects at least
+# one @spaces.GPU function at startup. E1 runs on the CPU, so this placeholder is never called
+# and uses no GPU quota; outside Hugging Face, `spaces` is absent and this block is skipped.
+try:
+    import spaces
+
+    @spaces.GPU
+    def _zerogpu_placeholder():
+        return None
+except ImportError:
+    pass
+
 # ---------------------------------------------------------------------------------------
 # Model and preprocessing, both written by the notebook
 # ---------------------------------------------------------------------------------------
