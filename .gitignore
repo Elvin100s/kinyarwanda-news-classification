@@ -37,10 +37,3 @@ results/experiments_FAST.csv
 # OS / editor
 .DS_Store
 *.swp
-
-# Personal working files, kept local only
-/COLAB_RUNBOOK.md
-/docs/
-/report/build_report.js
-/video_script/
-/video_clips/
