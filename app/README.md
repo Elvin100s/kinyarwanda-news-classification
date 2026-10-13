@@ -23,6 +23,19 @@ It is small (10.8 MB) and runs on a CPU, so the Space needs no GPU. The Space us
 ZeroGPU tier only because the free CPU tier was not available to this account; `app.py`
 declares the one `@spaces.GPU` function that tier requires but never calls it.
 
+## What the app shows
+
+- **The predicted section** in English and Kinyarwanda (from the dataset's own labels), with a
+  confidence meter and the next two most likely topics.
+- **Why this topic?** E1 is linear, so a topic's score is exactly the sum of (TF-IDF weight ×
+  logistic-regression weight) over the character n-grams in the text. The app highlights the
+  words that pushed towards the topic, underlines those that pushed against it, and lists the
+  strongest n-grams. Weights are measured against their average over the 14 topics (softmax
+  ignores anything shared by all topics), and the word scores add up exactly to the model's
+  score margin; this was checked to within 10⁻¹⁴ on 300 full test articles.
+- **All 14 sections** with their probabilities, and a low-confidence warning below the
+  validation-chosen threshold (0.46).
+
 ## Running locally
 
 ```bash
@@ -54,6 +67,7 @@ the app trace back to the experiment rather than being typed here.
   5. Classify   logistic regression -> probability for each of the 14 topics
   6. Top-3      the three most likely topics with their probabilities
   7. Threshold  top probability < 0.46 (chosen on VALIDATION) -> low-confidence warning
+  8. Explain    per-word and per-n-gram contributions to the predicted topic
 ```
 
 **Why there is a confidence threshold at all.** The notebook's out-of-domain probes (Section
