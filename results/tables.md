@@ -1,6 +1,6 @@
 # Generated tables
 
-*Generated 2026-09-29 02:03 UTC from `results/runs/`. Do not edit by hand — rerun the notebook instead.*
+*Generated 2026-10-14 23:46 UTC from `results/runs/`. Do not edit by hand — rerun the notebook instead.*
 
 ## Table 1. Experiment results
 
@@ -16,21 +16,21 @@
 | E3 | XLM-R base (fine-tuned) | RQ3 | 0.3671 | **0.3603** | 0.350–0.371 | 0.6140 | 278,054,414 |
 | B0 | Majority class | floor | 0.0274 | **0.0134** | 0.012–0.015 | 0.1039 | 1 |
 
-## Table 2. Per-class test metrics — best model (AfroXLMR base (fine-tuned))
+## Table 2. Per-class test metrics — selected model (TF-IDF char 2-5 grams + LR)
 
 | Class | Precision | Recall | F1 | Support |
 |---|---|---|---|---|
-| politics | 0.749 | 0.566 | 0.644 | 442 |
-| sport | 0.948 | 0.959 | 0.953 | 812 |
-| economy | 0.578 | 0.703 | 0.634 | 222 |
-| health | 0.658 | 0.753 | 0.703 | 320 |
-| entertainment | 0.866 | 0.831 | 0.848 | 848 |
-| history | 0.059 | 0.917 | 0.111 | 12 |
-| technology | 0.671 | 0.928 | 0.779 | 152 |
-| tourism | 0.736 | 0.605 | 0.664 | 152 |
-| culture | 0.642 | 0.335 | 0.440 | 203 |
-| fashion | 0.651 | 0.656 | 0.653 | 151 |
-| religion | 0.791 | 0.881 | 0.833 | 335 |
-| environment | 0.932 | 0.234 | 0.374 | 175 |
-| education | 0.156 | 0.071 | 0.098 | 70 |
-| relationship | 0.802 | 0.936 | 0.864 | 360 |
+| politics | 0.699 | 0.584 | 0.636 | 442 |
+| sport | 0.955 | 0.925 | 0.940 | 812 |
+| economy | 0.488 | 0.662 | 0.562 | 222 |
+| health | 0.619 | 0.741 | 0.674 | 320 |
+| entertainment | 0.828 | 0.824 | 0.826 | 848 |
+| history | 0.048 | 0.833 | 0.091 | 12 |
+| technology | 0.539 | 0.822 | 0.651 | 152 |
+| tourism | 0.827 | 0.533 | 0.648 | 152 |
+| culture | 0.656 | 0.300 | 0.412 | 203 |
+| fashion | 0.852 | 0.497 | 0.628 | 151 |
+| religion | 0.835 | 0.740 | 0.785 | 335 |
+| environment | 0.927 | 0.291 | 0.443 | 175 |
+| education | 0.179 | 0.071 | 0.102 | 70 |
+| relationship | 0.722 | 0.947 | 0.820 | 360 |
