@@ -7,7 +7,7 @@ AfroXLMR, with a deployed app that explains every prediction word by word.
 | | |
 |---|---|
 | **Live app** | https://huggingface.co/spaces/Elvin100S/kinyarwanda-news-classifier |
-| **Demo video** | `[[TODO: video URL]]` |
+| **Demo video** | [13-minute walkthrough of the notebook and the app](https://drive.google.com/file/d/1pnWpLfbT13-liukdUvSlK16zdxky0rHG/view?usp=sharing) |
 | **Report** | [`report/`](report/): research questions, method, full results, limitations, references |
 | **Notebook** | [`notebooks/kinyarwanda_news_classification.ipynb`](notebooks/kinyarwanda_news_classification.ipynb), the final Kaggle run with all outputs |
 
