@@ -8,7 +8,7 @@ AfroXLMR, with a deployed app that explains every prediction word by word.
 |---|---|
 | **Live app** | https://huggingface.co/spaces/Elvin100S/kinyarwanda-news-classifier |
 | **Demo video** | [13-minute walkthrough of the notebook and the app](https://drive.google.com/file/d/1pnWpLfbT13-liukdUvSlK16zdxky0rHG/view?usp=sharing) |
-| **Report** | [`report/`](report/): research questions, method, full results, limitations, references |
+| **Report** | [`Kinyarwanda_News_Classification_Report.pdf`](Kinyarwanda_News_Classification_Report.pdf): research questions, method, full results, limitations, references |
 | **Notebook** | [`notebooks/kinyarwanda_news_classification.ipynb`](notebooks/kinyarwanda_news_classification.ipynb), the final Kaggle run with all outputs |
 
 ![The deployed app](figures/09_app_screenshot.png)
@@ -79,7 +79,7 @@ results/     one JSON per run (+ seeds/), experiments.csv, significance tests, t
 figures/     figures from the final run; 09 is the deployed app
 data/        split indices and the audit evidence (duplicates, label checks, error samples)
 app/         the Gradio app and the saved E1 pipeline
-report/      the written report
+Kinyarwanda_News_Classification_Report.pdf   the written report
 scripts/     summarise_manual_review.py
 ```
 
